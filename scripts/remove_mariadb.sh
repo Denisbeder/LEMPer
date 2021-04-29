@@ -46,7 +46,7 @@ function init_mariadb_removal() {
 
     # Stop MariaDB mysql server process.
     if [[ $(pgrep -c mysqld) -gt 0 ]]; then
-        run systemctl stop mysql
+        run /etc/init.d/mysql stop
     fi
 
     if dpkg-query -l | awk '/mariadb/ { print $2 }' | grep -qwE "^mariadb-server-${MYSQL_VERSION}"; then

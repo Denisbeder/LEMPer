@@ -1269,10 +1269,10 @@ function init_nginx_install() {
                 run systemctl daemon-reload
 
                 # Enable in start up.
-                run systemctl enable nginx.service
+                run /etc/init.d/nginx.service enable
 
                 # Masked (?).
-                run systemctl unmask nginx.service
+                run /etc/init.d/nginx.service unmask
             ;;
             *)
                 # Skip installation.
@@ -1415,7 +1415,7 @@ function init_nginx_install() {
 
             if [[ $(pgrep -c nginx) -gt 0 ]]; then
                 if nginx -t 2>/dev/null > /dev/null; then
-                    run systemctl reload nginx
+                    run /etc/init.d/nginx reload
                     success "Nginx HTTP server restarted successfully."
                 else
                     error "Nginx configuration test failed. Please correct the error below:"
@@ -1423,7 +1423,7 @@ function init_nginx_install() {
                 fi
             elif [[ -n $(command -v nginx) ]]; then
                 if nginx -t 2>/dev/null > /dev/null; then
-                    run systemctl start nginx
+                    run /etc/init.d/nginx start
 
                     if [[ $(pgrep -c nginx) -gt 0 ]]; then
                         success "Nginx HTTP server started successfully."

@@ -118,13 +118,13 @@ function init_mariadb_install() {
                 run systemctl daemon-reload
 
                 # Unmask systemd service (?)
-                run systemctl unmask mariadb.service
+                run /etc/init.d/mariadb.service unmask
 
                 # Enable MariaDB on startup.
-                run systemctl enable mariadb.service
+                run /etc/init.d/mariadb.service enable
 
                 # Restart MariaDB service daemon.
-                run systemctl start mariadb
+                run /etc/init.d/mariadb start
                 #run service mysql start
 
                 ##
@@ -187,13 +187,13 @@ function init_mariadb_install() {
                 enable_mariabackup
 
                 # Restart MariaDB (MySQL)
-                run systemctl restart mariadb
+                run /etc/init.d/mariadb restart
 
                 if [[ $(pgrep -c mysql) -gt 0 ]]; then
                     success "MariaDB (MySQL) configured successfully."
                 elif [[ -n $(command -v mysql) ]]; then
                     # Server died? try to start it.
-                    run systemctl start mariadb
+                    run /etc/init.d/mariadb start
 
                     if [[ $(pgrep -c mysql) -gt 0 ]]; then
                         success "MariaDB (MySQL) configured successfully."

@@ -104,8 +104,8 @@ function init_mongodb_install() {
         fi
 
         # Enable in start-up
-        run systemctl enable mongod.service
-        run systemctl restart mongod
+        run /etc/init.d/mongod.service enable
+        run /etc/init.d/mongod restart
 
         if "${DRYRUN}"; then
             info "MongoDB server installed in dryrun mode."
@@ -199,7 +199,7 @@ function install_php_mongodb() {
     fi
 
     #run service "php${PHPv}-fpm" restart
-    run systemctl restart "php${PHPv}-fpm"
+    run /etc/init.d/"php${PHPv}-fpm" restart
 
     run cd "${CURRENT_DIR}"
 }

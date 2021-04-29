@@ -22,7 +22,7 @@ function init_nginx_removal() {
     # Stop nginx HTTP server process.
     if [[ $(pgrep -c nginx) -gt 0 ]]; then
         #run service nginx stop
-        run systemctl stop nginx
+        run /etc/init.d/nginx stop
     fi
 
     if [[ ${NGX_VERSION} == "mainline" || ${NGX_VERSION} == "latest" ]]; then
@@ -66,7 +66,7 @@ function init_nginx_removal() {
 
             # Disable systemctl.
             echo "Disable NGiNX service..."
-            [ -f /etc/systemd/system/multi-user.target.wants/nginx.service ] && run systemctl disable nginx
+            [ -f /etc/systemd/system/multi-user.target.wants/nginx.service ] && run /etc/init.d/nginx disable
             [ -f /etc/systemd/system/multi-user.target.wants/nginx.service ] && \
             run unlink /etc/systemd/system/multi-user.target.wants/nginx.service
             [ -f /lib/systemd/system/nginx.service ] && run rm -f /lib/systemd/system/nginx.service

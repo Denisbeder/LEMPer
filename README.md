@@ -36,9 +36,10 @@ LEMPer stands for Linux, Engine-X (Nginx), MariaDB and PHP installer written in 
 
 * Ensure that you have git installed.
 * Clone LEMPer Git repositroy, ```git clone https://github.com/joglomedia/LEMPer.git```.
-* Enter LEMPer directory.
+* Enter LEMPer directory ```cd LEMPer```.
 * Make a copy of .env.dist to .env ```cp .env.dist .env``` and replace the values.
-* Execute lemper.sh file, ```sudo ./lemper.sh --install```.
+* Edit if you prefer as settings ```vi .env```.
+* Execute lemper.sh file, ```sudo ./install.sh```.
 
 ### Install LEMPer stack
 

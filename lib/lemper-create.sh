@@ -1055,7 +1055,7 @@ function init_app() {
                     # Restart PHP FPM.
                     echo "Restart php${PHP_VERSION}-fpm configuration..."
 
-                    run systemctl restart "php${PHP_VERSION}-fpm"
+                    run /etc/init.d/"php${PHP_VERSION}-fpm" restart
 
                     success "New php${PHP_VERSION}-fpm pool [${USERNAME}] has been created."
                 fi
@@ -1576,7 +1576,7 @@ _EOL_
 
             # Validate config, reload when validated.
             if nginx -t 2>/dev/null > /dev/null; then
-                run systemctl reload nginx
+                run /etc/init.d/nginx reload
                 echo "Nginx HTTP server reloaded with new configuration."
             else
                 info "Something went wrong with Nginx configuration."

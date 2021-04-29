@@ -47,8 +47,8 @@ if hash apt 2>/dev/null; then
 
         # Sync and update local time with ntpd.
         # Masked? unmask first.
-        #run systemctl unmask ntp.service
-        #run systemctl start ntp
+        #run /etc/init.d/ntp.service unmask
+        #run /etc/init.d/ntp start
 
         # Save config.
         save_config "TIMEZONE=${TIMEZONE}"

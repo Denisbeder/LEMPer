@@ -425,7 +425,7 @@ function remove_ufw() {
 
         #run service ufw stop
         run ufw disable
-        run systemctl stop ufw
+        run /etc/init.d/ufw stop
 
         echo "Removing UFW iptables firewall..."
 
@@ -454,7 +454,7 @@ function remove_apf() {
         echo "Found APF+BFD iptables firewall, trying to remove it..."
 
         #run service apf stop
-        run systemctl stop apf
+        run /etc/init.d/apf stop
 
         echo "Removing APF+BFD iptables firewall..."
 

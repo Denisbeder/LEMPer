@@ -177,8 +177,8 @@ function install_memcached() {
             run systemctl daemon-reload
 
             # Enable in start up.
-            run systemctl enable memcached@memcache.service
-            run systemctl enable memcached@www-data.service
+            run /etc/init.d/memcached@memcache.service enable
+            run /etc/init.d/memcached@www-data.service enable
 
             # Enabled SASL auth?
             if [[ ${MEMCACHED_SASL} == "enable" || ${MEMCACHED_SASL} == true ]]; then
@@ -233,19 +233,19 @@ EOL
             info "Memcached server installed in dryrun mode."
         else
             if [[ $(pgrep -c memcached) -gt 0 ]]; then
-                #run systemctl restart memcached@memcache
+                #run /etc/init.d/memcached@memcache restart
                 run /usr/share/memcached/scripts/start-memcached \
                     /etc/memcached_memcache.conf /var/run/memcached_memcache.pid
-                #run systemctl restart memcached@www-data
+                #run /etc/init.d/memcached@www-data restart
                 run /usr/share/memcached/scripts/start-memcached \
                     /etc/memcached_www-data.conf /var/run/memcached_www-data.pid
 
                 success "Memcached server restarted successfully."
             elif [[ -n $(command -v memcached) ]]; then
-                #run systemctl start memcached@memcache
+                #run /etc/init.d/memcached@memcache start
                 run /usr/share/memcached/scripts/start-memcached \
                     /etc/memcached_memcache.conf /var/run/memcached_memcache.pid
-                #run systemctl start memcached@www-data
+                #run /etc/init.d/memcached@www-data start
                 run /usr/share/memcached/scripts/start-memcached \
                     /etc/memcached_www-data.conf /var/run/memcached_www-data.pid
 
@@ -323,10 +323,10 @@ EOL
             echo "Restarting php${PHPv}-fpm to apply Memcached module."
 
             if [[ $(pgrep -c "php-fpm${PHPv}") -gt 0 ]]; then
-                run systemctl reload "php${PHPv}-fpm"
+                run /etc/init.d/"php${PHPv}-fpm" reload
                 success "php${PHPv}-fpm restarted successfully."
             elif [[ -n $(command -v "php${PHPv}") ]]; then
-                run systemctl start "php${PHPv}-fpm"
+                run /etc/init.d/"php${PHPv}-fpm" start
 
                 if [[ $(pgrep -c "php-fpm${PHPv}") -gt 0 ]]; then
                     success "php${PHPv}-fpm started successfully."

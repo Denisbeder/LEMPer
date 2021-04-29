@@ -44,8 +44,8 @@ function init_memcached_removal() {
             # Disable systemctl.
             if [ -f /etc/systemd/system/multi-user.target.wants/memcached.service ]; then
                 echo "Disabling Memcached service..."
-                run systemctl disable memcached@memcache.service
-                run systemctl disable memcached@www-data.service
+                run /etc/init.d/memcached@memcache.service disable
+                run /etc/init.d/memcached@www-data.service disable
             fi
 
             [ -f /etc/systemd/system/multi-user.target.wants/memcached.service ] && \

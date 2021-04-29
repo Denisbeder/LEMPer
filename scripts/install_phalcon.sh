@@ -222,10 +222,10 @@ function enable_phalcon() {
 
             # Reload PHP-FPM service.
             if [[ $(pgrep -c "php-fpm${PHPv}") -gt 0 ]]; then
-                run systemctl reload "php${PHPv}-fpm"
+                run /etc/init.d/"php${PHPv}-fpm" reload
                 success "php${PHPv}-fpm restarted successfully."
             elif [[ -n $(command -v "php${PHPv}") ]]; then
-                run systemctl start "php${PHPv}-fpm"
+                run /etc/init.d/"php${PHPv}-fpm" start
 
                 if [[ $(pgrep -c "php-fpm${PHPv}") -gt 0 ]]; then
                     success "php${PHPv}-fpm started successfully."

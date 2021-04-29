@@ -20,7 +20,7 @@ requires_root
 function init_mongodb_removal() {
     # Stop MongoDB server process.
     if [[ $(pgrep -c mongod) -gt 0 ]]; then
-        run systemctl stop mongod
+        run /etc/init.d/mongod stop
     fi
 
     if dpkg-query -l | awk '/mongodb/ { print $2 }' | grep -qwE "^mongodb"; then

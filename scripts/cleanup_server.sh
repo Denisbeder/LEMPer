@@ -53,7 +53,7 @@ if [[ -n $(command -v apache2) || -n $(command -v httpd) ]]; then
             echo "Removing Apache2 installation in dryrun mode."
         else
             #run service apache2 stop
-            run systemctl stop apache2
+            run /etc/init.d/apache2 stop
 
             # shellcheck disable=SC2046
             run apt remove --purge -qq -y $(dpkg-query -l | awk '/apache2/ { print $2 }') \

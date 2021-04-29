@@ -131,7 +131,7 @@ maxretry = 3
 _EOL_
     fi
 
-    run systemctl start fail2ban
+    run /etc/init.d/fail2ban start
 }
 
 echo "[Fail2ban Installation]"

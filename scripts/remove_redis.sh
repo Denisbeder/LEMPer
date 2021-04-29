@@ -20,7 +20,7 @@ requires_root
 function init_redis_removal() {
     # Stop Redis server process.
     if [[ $(pgrep -c redis-server) -gt 0 ]]; then
-        run systemctl stop redis-server
+        run /etc/init.d/redis-server stop
     fi
 
     # Remove Redis server.

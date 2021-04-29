@@ -63,7 +63,7 @@ function install_postfix() {
 
         if [[ "${ENVIRONMENT}" == "production" ]]; then
             # Stop webserver first
-            run systemctl stop nginx
+            run /etc/init.d/nginx stop
 
             if [[ $(validate_fqdn "${SENDER_DOMAIN}") == true \
             && $(dig "${SENDER_DOMAIN}" +short) = "${SERVER_IP}" ]]; then
@@ -75,7 +75,7 @@ function install_postfix() {
             fi
 
             # Re-start webserver
-            run systemctl start nginx
+            run /etc/init.d/nginx start
         fi
 
         # Enable Postfix secure.
@@ -124,10 +124,10 @@ wordpress@${HOSTNAME}  ${LEMPER_USERNAME}' > /etc/postfix/virtual/addresses"
             info "Postfix reloaded in dry run mode."
         else
             if [[ $(pgrep -c postfix) -gt 0 ]]; then
-                run systemctl reload postfix
+                run /etc/init.d/postfix reload
                 success "Postfix reloaded successfully."
             elif [[ -n $(command -v postfix) ]]; then
-                run systemctl start postfix
+                run /etc/init.d/postfix start
 
                 if [[ $(pgrep -c postfix) -gt 0 ]]; then
                     success "Postfix started successfully."
@@ -236,10 +236,10 @@ function install_dovecot() {
             info "Dovecot installed in dryrun mode."
         else
             if [[ $(pgrep -c dovecot) -gt 0 ]]; then
-                run systemctl reload dovecot
+                run /etc/init.d/dovecot reload
                 success "Dovecot reloaded successfully."
             elif [[ -n $(command -v dovecot) ]]; then
-                run systemctl start dovecot
+                run /etc/init.d/dovecot start
 
                 if [[ $(pgrep -c dovecot) -gt 0 ]]; then
                     success "Dovecot started successfully."
