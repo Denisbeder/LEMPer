@@ -174,7 +174,7 @@ function install_memcached() {
             fi
 
             # Try reloading daemon.
-            run systemctl daemon-reload
+            run systemctl daemon-reload >> /dev/null 2>&1
 
             # Enable in start up.
             run /etc/init.d/memcached@memcache.service enable

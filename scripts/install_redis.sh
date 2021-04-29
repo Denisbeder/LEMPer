@@ -227,7 +227,7 @@ EOL
             fi
 
             # Reloading systemctl daemon.
-            run systemctl daemon-reload
+            run systemctl daemon-reload >> /dev/null 2>&1
         fi
 
         # Restart Redis daemon.

@@ -1266,7 +1266,7 @@ function init_nginx_install() {
                 fi
 
                 # Try reloading daemon.
-                run systemctl daemon-reload
+                run systemctl daemon-reload >> /dev/null 2>&1
 
                 # Enable in start up.
                 run /etc/init.d/nginx.service enable

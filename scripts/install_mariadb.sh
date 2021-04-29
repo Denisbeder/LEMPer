@@ -115,7 +115,7 @@ function init_mariadb_install() {
                 fi
 
                 # Trying to reload daemon.
-                run systemctl daemon-reload
+                run systemctl daemon-reload >> /dev/null 2>&1
 
                 # Unmask systemd service (?)
                 run /etc/init.d/mariadb.service unmask
