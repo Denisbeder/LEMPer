@@ -2,7 +2,7 @@
 
 LEMPer stands for Linux, Engine-X (Nginx), MariaDB and PHP installer written in Bash script. This is just a small tool set (a bunch collection of scripts) that usually I use to deploy and manage LEMP stack on Debian/Ubuntu. LEMPer is _CloudWays_, _Ploi_, _RunCloud_, and _ServerPilot_ free alternative crafted to support wide-range PHP framework (not only WordPress).
 
-[![Build Status](https://travis-ci.org/joglomedia/LEMPer.svg?branch=2.0.x)](https://travis-ci.org/joglomedia/LEMPer)
+[![Build Status](https://travis-ci.org/denisbeder/LEMPer.svg?branch=2.0.x)](https://travis-ci.org/denisbeder/LEMPer)
 
 ## Features
 
@@ -35,7 +35,7 @@ LEMPer stands for Linux, Engine-X (Nginx), MariaDB and PHP installer written in 
 ## Setting Up
 
 * Ensure that you have git installed.
-* Clone LEMPer Git repositroy, ```git clone https://github.com/joglomedia/LEMPer.git```.
+* Clone LEMPer Git repositroy, ```git clone https://github.com/denisbeder/LEMPer.git```.
 * Enter LEMPer directory ```cd LEMPer```.
 * Make a copy of .env.dist to .env ```cp .env.dist .env``` and replace the values.
 * Edit if you prefer as settings ```vi .env```.
@@ -44,7 +44,7 @@ LEMPer stands for Linux, Engine-X (Nginx), MariaDB and PHP installer written in 
 ### Install LEMPer stack
 
 ```bash
-sudo apt install git && git clone -q https://github.com/joglomedia/LEMPer.git && cd LEMPer && cp -f .env.dist .env && sudo ./install.sh
+sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git && cd LEMPer && cp -f .env.dist .env && sudo ./install.sh
 ```
 
 ### Remove LEMPer stack
@@ -119,11 +119,11 @@ http://YOUR_DOMAIN_NAME:8082/lcp/filemanager
 * ~~Add database backup tool (Mariabackup, Percona Xtrabackup, else?)~~
 * Add server monitoring (Amplify, Monit, Nagios, else?)
 * Add user account & hosting package management.
-* Add your feature [request here](https://github.com/joglomedia/LEMPer/issues/new).
+* Add your feature [request here](https://github.com/denisbeder/LEMPer/issues/new).
 
 ## Contributing
 
-* Fork it ([https://github.com/joglomedia/LEMPer/fork](https://github.com/joglomedia/LEMPer/fork))
+* Fork it ([https://github.com/denisbeder/LEMPer/fork](https://github.com/denisbeder/LEMPer/fork))
 * Create your feature branch (git checkout -b my-new-feature) or fix issue (git checkout -b fix-some-issue)
 * Commit your changes (git commit -am 'Add some feature') or (git commit -am 'Fix some issue')
 * Push to the branch (git push origin my-new-feature) or (git push origin fix-some-issue)
