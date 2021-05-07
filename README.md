@@ -2,8 +2,6 @@
 
 LEMPer stands for Linux, Engine-X (Nginx), MariaDB and PHP installer written in Bash script. This is just a small tool set (a bunch collection of scripts) that usually I use to deploy and manage LEMP stack on Debian/Ubuntu. 
 
-[![Build Status](https://travis-ci.org/joglomedia/LEMPer.svg?branch=2.0.x)](https://travis-ci.org/joglomedia/LEMPer)
-
 ## Features
 
 * Nginx pre-configured optimization for low-end VPS/cloud server.
@@ -42,5 +40,5 @@ sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git &&
 * Add your feature [request here](https://github.com/joglomedia/LEMPer/issues/new).
 
 ## Copyright
-This is forked from [](https://github.com/joglomedia/LEMPer). All rights reserved to [joglomedia](https://github.com/joglomedia/LEMPer).
+This is forked from [https://github.com/joglomedia/LEMPer](https://github.com/joglomedia/LEMPer). All rights reserved to [joglomedia](https://github.com/joglomedia/LEMPer).
 (c) 2014-2020 | [MasEDI.Net](https://masedi.net/)
