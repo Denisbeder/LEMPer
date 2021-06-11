@@ -5,7 +5,7 @@ echo -e "${CYAN}[Fail2ban Installation]${NC}"
 
 apt install -qq -y fail2ban
 
-SSH_PORT=${SSH_PORT:-22}
+SSH_PORT=22
 
 # Enable jail
 cat > /etc/fail2ban/jail.local <<_EOL_

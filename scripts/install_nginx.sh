@@ -87,11 +87,9 @@ esac
 # Adjust worker connections.
 sed -i "s/worker_connections\ 4096/worker_connections\ ${NGX_CONNECTIONS}/g" /etc/nginx/nginx.conf
 
-# Allow server IP to fastCGI cache purge rule.
-sed -i "s/#allow\ SERVER_IP/allow\ ${SERVER_IP}/g" /etc/nginx/includes/rules_fastcgi_cache.conf
 
 # Restart Nginx server
-echo -e "${CYAN}Starting Nginx HTTP server for ${HOSTNAME} (${SERVER_IP})...${NC}"
+echo -e "${CYAN}Starting Nginx HTTP server...${NC}"
 
 if [[ $(pgrep -c nginx) -gt 0 ]]; then
     if nginx -t 2>/dev/null > /dev/null; then

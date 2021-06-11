@@ -3,6 +3,8 @@
 ### Fail2ban installation ###
 echo -e "${CYAN}[Firewall (UFW)  Installation]${NC}"
 
+SSH_PORT=22
+
 # Install UFW
 apt install -qq -y ufw
 
