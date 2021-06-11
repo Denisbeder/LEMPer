@@ -20,7 +20,7 @@ server {
     include /etc/nginx/includes/rules_restriction.conf;
     #include /etc/nginx/includes/rules_fastcgi_cache.conf;
 
-    include /etc/nginx/vhost/site_default.conf;
+    include /etc/nginx/vhost/site_laravel.conf;
 
     #location ~ ^/(status|ping)$ {
     #    include /etc/nginx/fastcgi_params;
