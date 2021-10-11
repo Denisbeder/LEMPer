@@ -10,13 +10,13 @@ source <(grep -v '^#' vars.sh | grep -v '^\[' | sed -E '/^[[:space:]]*$/d' | sed
 ### Init Installation ###
 . ./scripts/install_dependencies.sh
 ##. ./scripts/enable_swap.sh
-##. ./scripts/create_account.sh
+. ./scripts/create_account.sh
 ##. ./scripts/install_certbot.sh
 . ./scripts/install_nginx.sh
 . ./scripts/install_php.sh
 . ./scripts/install_memcached.sh
 . ./scripts/install_redis.sh
-. ./scripts/install_mariadb.sh
+##. ./scripts/install_mariadb.sh
 . ./scripts/install_fail2ban.sh
 . ./scripts/install_secure.sh
 
