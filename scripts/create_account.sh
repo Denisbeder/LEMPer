@@ -7,4 +7,4 @@ adduser $USERNAME
 
 usermod -aG sudo $USERNAME
 
-rsync --archive "--chown=${USERNAME}:${$USERNAME}" ~/.ssh "/home/${USERNAME}"
+rsync --archive "--chown=${USERNAME}:${USERNAME}" ~/.ssh "/home/${USERNAME}"
