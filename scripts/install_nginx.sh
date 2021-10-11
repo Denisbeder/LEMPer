@@ -47,6 +47,7 @@ ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/00-default
 # Custom pages.
 if [ ! -d /usr/share/nginx/html ]; then
     mkdir -p /usr/share/nginx/html
+    chown=${USERNAME}:${USERNAME} /usr/share/nginx/html
 fi
 cp -fr share/nginx/html/error-pages /usr/share/nginx/html/
 cp -f share/nginx/html/index.html /usr/share/nginx/html/
