@@ -74,14 +74,17 @@ cp -f "etc/php/${PHPv}/fpm/pool.d/www.conf" "/etc/php/${PHPv}/fpm/pool.d/"
 sed -i "s|php_admin_value\[date\.timezone\]\ =\ UTC|php_admin_value\[date\.timezone\]\ =\ ${TIMEZONE}|g" \
     "/etc/php/${PHPv}/fpm/pool.d/www.conf"
 
+# Create default directories for php optimized.
+run mkdir -p "/home/${POOLNAME}/.lemper/tmp"
+run mkdir -p "/home/${POOLNAME}/.lemper/php/opcache"
+run mkdir -p "/home/${POOLNAME}/.lemper/php/sessions"
+run mkdir -p "/home/${POOLNAME}/cgi-bin"
+run chown -hR "${POOLNAME}:${POOLNAME}" "/home/${POOLNAME}"
 
-# Create default directories.
-mkdir -p "/home/${POOLNAME}/.lemper/tmp"
-mkdir -p "/home/${POOLNAME}/.lemper/php/opcache"
-mkdir -p "/home/${POOLNAME}/.lemper/php/sessions"
-mkdir -p "/home/${POOLNAME}/cgi-bin"
-chown -hR "${POOLNAME}:${POOLNAME}" "/home/${POOLNAME}"
-
+# Create PHP log dir.
+if [ ! -d /var/log/php ]; then
+    mkdir -p /var/log/php
+fi
 
 # Restart PHP-fpm server.
 if [[ $(pgrep -c "php-fpm${PHPv}") -gt 0 ]]; then
