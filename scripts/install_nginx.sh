@@ -52,7 +52,8 @@ fi
 # Custom errors pages.
 #cp -fr share/nginx/html/error-pages /usr/share/nginx/html/
 
-cp -f share/nginx/html/index.html /usr/share/nginx/html/
+mkdir /usr/share/nginx/html/public
+cp -f share/nginx/html/index.html /usr/share/nginx/html/public/
 
  # Nginx cache directory.
 if [ ! -d /var/cache/nginx/fastcgi_cache ]; then

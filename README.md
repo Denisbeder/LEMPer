@@ -37,7 +37,6 @@ sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git &&
 * ~~Add database backup tool (Mariabackup, Percona Xtrabackup, else?)~~
 * Add server monitoring (Amplify, Monit, Nagios, else?)
 * Add user account & hosting package management.
-* Add your feature [request here](https://github.com/joglomedia/LEMPer/issues/new).
 
 ## Copyright
 This is forked from [https://github.com/joglomedia/LEMPer](https://github.com/joglomedia/LEMPer). All rights reserved to [joglomedia](https://github.com/joglomedia/LEMPer).
