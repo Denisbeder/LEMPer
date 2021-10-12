@@ -49,7 +49,9 @@ if [ ! -d /usr/share/nginx/html ]; then
     mkdir -p /usr/share/nginx/html
     chown=${USERNAME}:${USERNAME} /usr/share/nginx/html
 fi
-cp -fr share/nginx/html/error-pages /usr/share/nginx/html/
+# Custom errors pages.
+#cp -fr share/nginx/html/error-pages /usr/share/nginx/html/
+
 cp -f share/nginx/html/index.html /usr/share/nginx/html/
 
  # Nginx cache directory.
@@ -88,6 +90,8 @@ esac
 # Adjust worker connections.
 sed -i "s/worker_connections\ 4096/worker_connections\ ${NGX_CONNECTIONS}/g" /etc/nginx/nginx.conf
 
+# Make default server accessible from hostname or IP address.
+run sed -i "s/localhost.localdomain/${HOSTNAME}/g" /etc/nginx/sites-available/default
 
 # Restart Nginx server
 echo -e "${CYAN}Starting Nginx HTTP server...${NC}"

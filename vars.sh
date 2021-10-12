@@ -9,6 +9,8 @@ NC='\033[0m'
 
 USERNAME=dev
 
+HOSTNAME=localhost
+
 ADMIN_EMAIL=duek.digital@gmail.com
 
 # RAM size in MB

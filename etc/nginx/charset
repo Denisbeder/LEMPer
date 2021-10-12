@@ -2,7 +2,7 @@
 # everything we possibly can as UTF-8 these days and files tend to come from
 # lots of different places, the first thing we want to do is make sure any other
 # screwy character sets are converted.
-#charset utf-8;
+charset utf-8;
 
 # Update charset_types due to updated mime.types
 charset_types application/javascript
