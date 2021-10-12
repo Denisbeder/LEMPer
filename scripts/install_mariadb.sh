@@ -86,6 +86,13 @@ SQL_QUERY="${SQL_QUERY}
         DROP DATABASE IF EXISTS test;
         DELETE FROM mysql.db WHERE Db='test' OR Db='test\_%';"
 
+
+##### ADD DATABASE WITH BIND_ADDRESS #####
+#CREATE DATABASE site;
+#CREATE USER 'site'@'10.116.80.2' IDENTIFIED BY 'fKjbX!DphY67FtJG';
+#GRANT ALL PRIVILEGES ON site.* TO 'site'@'10.116.80.2';
+
+
 # Flush the privileges tables.
 SQL_QUERY="${SQL_QUERY}
         FLUSH PRIVILEGES;"
