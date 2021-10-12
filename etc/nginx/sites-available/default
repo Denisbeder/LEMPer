@@ -12,7 +12,7 @@ server {
     access_log /var/log/nginx/localhost.access.log;
     error_log /var/log/nginx/localhost.error.log;
 
-    root /usr/share/nginx/html;
+    root /usr/share/nginx/html/public;
     index index.php index.html index.htm;
 
     include /etc/nginx/includes/rules_security.conf;
