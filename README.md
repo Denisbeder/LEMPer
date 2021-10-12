@@ -31,7 +31,7 @@ sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git &&
 ### Install LEMPer MYSQL stack
 
 ```bash
-sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git && cd LEMPer && sudo ./install_mysql.sh
+sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git && cd LEMPer && sudo chmod +x ./install_mysql.sh && sudo ./install_mysql.sh
 ```
 
 ## TODO
