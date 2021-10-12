@@ -29,4 +29,4 @@ PHP_VERSION="7.4"
 
 ### [mysql] ###
 # Leave it blank for auto generated secure password.
-MYSQL_ROOT_PASS=""
+MYSQL_ROOT_PASS="root"
