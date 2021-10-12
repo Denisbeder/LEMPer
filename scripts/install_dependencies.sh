@@ -2,7 +2,7 @@
 
 ### Install dependencies ###
 echo -e "${CYAN}Initializing installation...${NC}"
-locale-gen en_US.UTF-8 && dpkg-reconfigure locales
+locale-gen pt_BR.UTF-8 && dpkg-reconfigure locales
 
 # Update repositories.
 echo -e "${CYAN}Updating repository, please wait...${NC}"
