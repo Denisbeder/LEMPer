@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+#Disable ssh authentication password
+sed -i 's/#\?\(PermitRootLogin\s*\).*$/\1 no/' /etc/ssh/sshd_config
+sed -i 's/#\?\(PubkeyAuthentication\s*\).*$/\1 yes/' /etc/ssh/sshd_config
+sed -i 's/#\?\(PermitEmptyPasswords\s*\).*$/\1 no/' /etc/ssh/sshd_config
+sed -i 's/#\?\(PasswordAuthentication\s*\).*$/\1 no/' /etc/ssh/sshd_config
+sed -i 's/#\?\(ChallengeResponseAuthentication\s*\).*$/\1 no/' /etc/ssh/sshd_config
+
+systemctl reload sshd 
+
 ### Fail2ban installation ###
 echo -e "${CYAN}[Firewall (UFW)  Installation]${NC}"
 
@@ -44,3 +53,4 @@ if [[ -n $(command -v ufw) ]]; then
         echo -e "${RED}Something went wrong with UFW installation.${NC}"
     fi
 fi
+

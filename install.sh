@@ -8,9 +8,9 @@
 source <(grep -v '^#' vars.sh | grep -v '^\[' | sed -E '/^[[:space:]]*$/d' | sed -E 's/\r/ /g')
 
 ### Init Installation ###
+. ./scripts/create_account.sh
 . ./scripts/install_dependencies.sh
 ##. ./scripts/enable_swap.sh
-. ./scripts/create_account.sh
 ##. ./scripts/install_certbot.sh
 . ./scripts/install_nginx.sh
 . ./scripts/install_php.sh

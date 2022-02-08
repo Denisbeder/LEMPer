@@ -83,11 +83,11 @@ sed -i "s|php_admin_value\[date\.timezone\]\ =\ UTC|php_admin_value\[date\.timez
     "/etc/php/${PHPv}/fpm/pool.d/www.conf"
 
 # Create default directories for php optimized.
-run mkdir -p "/home/${USERNAME}/.lemper/tmp"
-run mkdir -p "/home/${USERNAME}/.lemper/php/opcache"
-run mkdir -p "/home/${USERNAME}/.lemper/php/sessions"
-run mkdir -p "/home/${USERNAME}/cgi-bin"
-run chown -hR "${USERNAME}:${USERNAME}" "/home/${USERNAME}"
+mkdir -p "/usr/share/nginx/html/.lemper/tmp"
+mkdir -p "/usr/share/nginx/html/.lemper/php/opcache"
+mkdir -p "/usr/share/nginx/html/.lemper/php/sessions"
+mkdir -p "/usr/share/nginx/html/cgi-bin"
+chown -hR "${USERNAME}:${USERNAME}" "/home/${USERNAME}"
 
 # Create PHP log dir.
 if [ ! -d /var/log/php ]; then
