@@ -5,9 +5,11 @@ server {
     server_name localhost.localdomain;
 
     #include /etc/nginx/includes/ssl.conf;
-    #ssl_certificate /etc/letsencrypt/live/localhost.localdomain/fullchain.pem;
-    #ssl_certificate_key /etc/letsencrypt/live/localhost.localdomain/privkey.pem;
-    #ssl_trusted_certificate /etc/letsencrypt/live/localhost.localdomain/fullchain.pem;
+    
+    # SSL by Cloudflare
+    ssl_certificate /etc/cloudflare/publkey.pem;
+    ssl_certificate_key /etc/cloudflare/privkey.pem;
+    ssl_client_certificate /etc/cloudflare/origin-pull-ca.pem;
 
     access_log /var/log/nginx/localhost.access.log;
     error_log /var/log/nginx/localhost.error.log;
