@@ -4,16 +4,16 @@
 echo -e "${CYAN}[Nginx HTTP (Web) Server Installation]${NC}"
 
 # Delete previous Nginx installation
-apt-get purge nginx-core nginx-common nginx -qq -y && apt-get autoremove -qq -y
+apt-get purge nginx-core nginx-common nginx -yqq && apt-get autoremove -yqq
 
 # Add custom repository for Nginx
 add-apt-repository ppa:hda-me/nginx-stable -y
 
 # Update list of available packages
-apt-get update -qq -y
+apt-get update -yqq
 
 # Install custom Nginx package
-apt-get install nginx -qq -y
+apt-get install nginx -yqq
 
 echo -e "${CYAN}Creating Nginx configuration...${NC}"
 

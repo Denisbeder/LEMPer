@@ -3,7 +3,7 @@
 ### Nginx installation ###
 echo -e "${CYAN}[Redis Server Installation]${NC}"
 
-apt install -qq -y redis-server redis-tools
+apt install -yqq redis-server redis-tools
 
 echo -e "${CYAN}Configuring Memcached server...${NC}"
 

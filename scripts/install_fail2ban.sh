@@ -3,7 +3,7 @@
 ### Fail2ban installation ###
 echo -e "${CYAN}[Fail2ban Installation]${NC}"
 
-apt install -qq -y fail2ban
+apt install -yqq fail2ban
 
 SSH_PORT=22
 

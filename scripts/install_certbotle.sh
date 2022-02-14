@@ -4,8 +4,8 @@
 echo -e "${CYAN}[Certbot Let's Encrypt Installation]${NC}"
 
 add-apt-repository -y ppa:certbot/certbot
-apt update -qq -y
-apt install -qq -y certbot
+apt update -yqq
+apt install -yqq certbot
 
 # Add Certbot auto renew command to cronjob.
 export EDITOR=nano

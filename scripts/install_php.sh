@@ -49,16 +49,16 @@ spawn-fcgi fcgiwrap
 ")
 
 # Install the repository ppa:ondrej/php, which will give you all your versions of PHP
-apt install -qq -y language-pack-en-base
+apt install -yqq language-pack-en-base
 export LC_ALL=en_US.UTF-8 
 export LANG=en_US.UTF-8 
-apt install -qq -y software-properties-common
-add-apt-repository -y ppa:ondrej/php5
+apt install -yqq software-properties-common
+add-apt-repositoyry ppa:ondrej/php5
 apt-update
 
-apt install -qq -y ${PHP_PKGS[@]}
+apt install -yqq ${PHP_PKGS[@]}
 
-apt -qq -y autoremove
+apt -yqq autoremove
 
 ##
 # PHP & FPM Optimization.

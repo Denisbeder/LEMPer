@@ -4,12 +4,12 @@
 echo -e "${CYAN}[Memcached Server Installation]${NC}"
 
 echo -e "${CYAN}Installing Memcached server${NC}"
-apt install -qq -y \
+apt install -yqq \
 libevent-dev libsasl2-dev libmemcached-tools libmemcached11 libmemcachedutil2 memcached
 
 # Install PHP Memcached extension.
 echo -e "${CYAN}Install PHP Memcached extension${NC}"
-apt install -qq -y \
+apt install -yqq \
 "php${PHP_VERSION}-igbinary" "php${PHP_VERSION}-memcache" "php${PHP_VERSION}-memcached" "php${PHP_VERSION}-msgpack"
 
 echo -e "${CYAN}Configuring Memcached server...${NC}"

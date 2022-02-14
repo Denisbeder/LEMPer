@@ -3,7 +3,7 @@
 ### MariaDB installation ###
 echo -e "${CYAN}[MariaDB (MySQL drop-in replacement) Installation]${NC}"
 
-apt install -qq -y libmariadb3 mariadb-common mariadb-server
+apt install -yqq libmariadb3 mariadb-common mariadb-server
 
 # Configure MySQL installation.
 echo -e "${CYAN}Configure MySQL installation${NC}"
