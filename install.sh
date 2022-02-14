@@ -18,6 +18,7 @@ source <(grep -v '^#' vars.sh | grep -v '^\[' | sed -E '/^[[:space:]]*$/d' | sed
 . ./scripts/install_php.sh
 . ./scripts/install_memcached.sh
 . ./scripts/install_redis.sh
+. ./scripts/install_supervisor.sh
 ##. ./scripts/install_mariadb.sh
 . ./scripts/install_fail2ban.sh
 . ./scripts/install_secure.sh

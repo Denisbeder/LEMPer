@@ -63,7 +63,6 @@ apt -yqq autoremove
 ##
 # PHP & FPM Optimization.
 #
-
 echo -e "${CYAN}Optimizing PHP ${PHPv} & FPM configuration...${NC}"
 
 # Copy the optimized-version of php.ini
