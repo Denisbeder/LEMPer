@@ -25,7 +25,7 @@ fi
 cp -f etc/nginx/nginx.conf /etc/nginx/
 cp -f etc/nginx/charset /etc/nginx/
 cp -f etc/nginx/comp_gzip /etc/nginx/
-cp -f etc/nginx/{fastcgi_cache,fastcgi_https_map,fastcgi_params,proxy_cache,proxy_params} \
+cp -f etc/nginx/{fastcgi_https_map,fastcgi_params,proxy_params} \
     /etc/nginx/
 cp -f etc/nginx/{http_cloudflare_ips,http_proxy_ips,upstream} /etc/nginx/
 cp -fr etc/nginx/{includes,vhost} /etc/nginx/
@@ -55,19 +55,8 @@ fi
 mkdir /usr/share/nginx/html/site/public
 cp -f share/nginx/html/index.html /usr/share/nginx/html/site/public/
 
-# Set own to directory
-chown -R ${USERNAME}:${USERNAME} /usr/share/nginx/html
-
- # Nginx cache directory.
-if [ ! -d /var/cache/nginx/fastcgi_cache ]; then
-    mkdir -p /var/cache/nginx/fastcgi_cache
-fi
-if [ ! -d /var/cache/nginx/proxy_cache ]; then
-    mkdir -p /var/cache/nginx/proxy_cache
-fi
-
 # Fix ownership.
-chown -hR www-data:www-data /var/cache/nginx
+chown -R ${USERNAME}:${USERNAME} /usr/share/nginx/html
 
 # Adjust nginx to meet hardware resources.
 echo -e "${CYAN}Adjust nginx to meet hardware resources...${NC}"
