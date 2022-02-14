@@ -47,13 +47,16 @@ ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/00-default
 # Custom pages.
 if [ ! -d /usr/share/nginx/html ]; then
     mkdir -p /usr/share/nginx/html
-    chown=${USERNAME}:${USERNAME} /usr/share/nginx/html
 fi
+
 # Custom errors pages.
 #cp -fr share/nginx/html/error-pages /usr/share/nginx/html/
 
-mkdir /usr/share/nginx/html/public
-cp -f share/nginx/html/index.html /usr/share/nginx/html/public/
+mkdir /usr/share/nginx/html/site/public
+cp -f share/nginx/html/index.html /usr/share/nginx/html/site/public/
+
+# Set own to directory
+chown -R ${USERNAME}:${USERNAME} /usr/share/nginx/html
 
  # Nginx cache directory.
 if [ ! -d /var/cache/nginx/fastcgi_cache ]; then
@@ -86,7 +89,7 @@ case ${CPU_CORES} in
 esac
 
 # Adjust worker processes.
-#sed -i "s/worker_processes\ auto/worker_processes\ ${CPU_CORES}/g" /etc/nginx/nginx.conf
+sed -i "s/worker_processes\ auto/worker_processes\ ${CPU_CORES}/g" /etc/nginx/nginx.conf
 
 # Adjust worker connections.
 sed -i "s/worker_connections\ 4096/worker_connections\ ${NGX_CONNECTIONS}/g" /etc/nginx/nginx.conf

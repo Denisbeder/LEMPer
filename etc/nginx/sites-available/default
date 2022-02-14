@@ -2,25 +2,24 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    server_name localhost.localdomain;
+    #server_name localhost.localdomain;
 
     #include /etc/nginx/includes/ssl.conf;
     
     # SSL by Cloudflare
-    ssl_certificate /etc/cloudflare/publkey.pem;
-    ssl_certificate_key /etc/cloudflare/privkey.pem;
-    ssl_client_certificate /etc/cloudflare/origin-pull-ca.pem;
+    #ssl_certificate /etc/cloudflare/publkey.pem;
+    #ssl_certificate_key /etc/cloudflare/privkey.pem;
+    #ssl_client_certificate /etc/cloudflare/origin-pull-ca.pem;
 
     access_log /var/log/nginx/localhost.access.log;
     error_log /var/log/nginx/localhost.error.log;
 
-    root /usr/share/nginx/html/public;
+    root /usr/share/nginx/html/site/public;
     index index.php index.html index.htm;
 
     include /etc/nginx/includes/rules_security.conf;
     include /etc/nginx/includes/rules_staticfiles.conf;
     include /etc/nginx/includes/rules_restriction.conf;
-    #include /etc/nginx/includes/rules_fastcgi_cache.conf;
 
     include /etc/nginx/vhost/site_laravel.conf;
 
@@ -41,7 +40,6 @@ server {
         fastcgi_index index.php;
         include /etc/nginx/fastcgi_params;
         include /etc/nginx/includes/fastcgi.conf;
-        #include /etc/nginx/includes/fastcgi_cache.conf;
         fastcgi_pass unix:/run/php/php7.4-fpm.sock;
     }
 
