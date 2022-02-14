@@ -16,6 +16,6 @@ sed -i "s/user=user/user=${USERNAME}/g" /etc/supervisor/conf.d/laravel-worker.co
 
 echo -e "${CYAN}Start Supervisor...${NC}"
 /etc/init.d/supervisor start
-/etc/init.d/supervisor reread
-/etc/init.d/supervisor update
-/etc/init.d/supervisor start laravel-worker:*
+supervisorctl reread
+supervisorctl update
+supervisorctl start laravel-worker:* 

@@ -52,8 +52,11 @@ fi
 # Custom errors pages.
 #cp -fr share/nginx/html/error-pages /usr/share/nginx/html/
 
-mkdir /usr/share/nginx/html/site/public
+mkdir -p /usr/share/nginx/html/site/public
 cp -f share/nginx/html/index.html /usr/share/nginx/html/site/public/
+
+# Remove index.html default NGINX
+rm -f /usr/share/nginx/html/index.html 
 
 # Fix ownership.
 chown -R ${USERNAME}:${USERNAME} /usr/share/nginx/html
