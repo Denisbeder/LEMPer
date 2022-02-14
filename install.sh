@@ -4,6 +4,8 @@
 # | Simple LEMP stack installer for Debian/Ubuntu forked from https://github.com/joglomedia/LEMPer |
 # +------------------------------------------------------------------------------------------------+
 
+export DEBIAN_FRONTEND=noninteractive
+
 ### Include variables ###
 source <(grep -v '^#' vars.sh | grep -v '^\[' | sed -E '/^[[:space:]]*$/d' | sed -E 's/\r/ /g')
 

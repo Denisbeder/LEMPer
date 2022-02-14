@@ -7,6 +7,8 @@
 ### Include variables ###
 source <(grep -v '^#' vars.sh | grep -v '^\[' | sed -E '/^[[:space:]]*$/d' | sed -E 's/\r/ /g')
 
+export DEBIAN_FRONTEND=noninteractive
+
 ### Init Installation ###
 . ./scripts/install_dependencies.sh
 ##. ./scripts/enable_swap.sh

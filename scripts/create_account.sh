@@ -9,3 +9,5 @@ usermod -aG sudo $USERNAME
 adduser $USERNAME www-data
 
 rsync --archive "--chown=${USERNAME}:${USERNAME}" ~/.ssh "/home/${USERNAME}"
+
+su dev
