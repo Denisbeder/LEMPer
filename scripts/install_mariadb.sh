@@ -92,7 +92,6 @@ SQL_QUERY="${SQL_QUERY}
 #CREATE USER 'site'@'10.116.80.2' IDENTIFIED BY 'BLSLtXzPWW@M';
 #GRANT ALL PRIVILEGES ON site.* TO 'site'@'10.116.80.2';
 
-
 # Flush the privileges tables.
 SQL_QUERY="${SQL_QUERY}
         FLUSH PRIVILEGES;"
