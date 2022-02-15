@@ -31,6 +31,6 @@ PHP_VERSION="7.4"
 # Leave it blank for auto generated secure password.
 MYSQL_ROOT_PASS="root"
 MYSQL_DATABASE_NAME="site"
-MYSQL_USERNAME="BLSLtXzPWW@M"
+MYSQL_USERNAME="site"
 MYSQL_PASS="BLSLtXzPWW@M"
 MYSQL_BIND_ADDRESS=127.0.0.1
