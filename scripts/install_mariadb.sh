@@ -102,6 +102,15 @@ SQL_QUERY="${SQL_QUERY}
 SQL_QUERY="${SQL_QUERY}
         FLUSH PRIVILEGES;"
 
+# Fix error: ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO).
+SQL_QUERY="${SQL_QUERY}
+        USE mysql;
+        UPDATE user SET plugin='unix_socket' WHERE User='root';"
+
+# mysql_upgrade saves the MySQL version number in a file named mysql_upgrade_info in the data directory. 
+# This is used to quickly check whether all tables have been checked for this release so that table-checking can be skipped
+mysql_upgrade -u root -p${MYSQL_ROOT_PASS} --force
+
 # Root password is blank for newly installed MariaDB (MySQL).
 if mysql --user=root --password="" -e "${SQL_QUERY}"; then
     echo -e "${GREEN}Securing MariaDB (MySQL) installation has been done.${NC}"
