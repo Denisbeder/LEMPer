@@ -23,17 +23,6 @@ server {
 
     include /etc/nginx/vhost/site_laravel.conf;
 
-    #location ~ ^/(status|ping)$ {
-    #    include /etc/nginx/fastcgi_params;
-    #
-    #    fastcgi_pass unix:/run/php/php7.3-fpm.sock;
-    #    fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;
-    #
-    #    allow all;
-    #    auth_basic "Denied";
-    #    auth_basic_user_file /srv/.htpasswd;
-    #}
-
     location ~ \.php$ {
         try_files $uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
@@ -45,7 +34,7 @@ server {
 
     #include /etc/nginx/includes/error_pages.conf;
 
-    #include /etc/nginx/includes/fcgiwrap.conf;
+    include /etc/nginx/includes/fcgiwrap.conf;
 }
 
 ## SSL redirection here.
