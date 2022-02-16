@@ -22,15 +22,15 @@ RAM_SIZE=$(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024)))
 # or "none" for current server setting.
 # Ref: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 # Example: Asia/Jakarta
-TIMEZONE="America/Campo_Grande"
+TIMEZONE=America/Campo_Grande
 
 # It is highly recommended to install PHP version 7.4 or greater.
-PHP_VERSION="7.4"
+PHP_VERSION=7.4
 
 ### [mysql] ###
 # Leave it blank for auto generated secure password.
-MYSQL_ROOT_PASS="root"
-MYSQL_DATABASE_NAME="site"
-MYSQL_USERNAME="site"
-MYSQL_PASS="BLSLtXzPWW@M"
+MYSQL_ROOT_PASS=root
+MYSQL_DATABASE_NAME=site
+MYSQL_USERNAME=user
+MYSQL_PASS=secret
 MYSQL_BIND_ADDRESS=127.0.0.1
