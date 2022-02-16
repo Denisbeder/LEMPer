@@ -15,7 +15,7 @@ echo -e "${CYAN}[Firewall (UFW)  Installation]${NC}"
 SSH_PORT=22
 
 # Install UFW
-apt install -qq -y ufw
+apt install -yqq ufw
 
 if [[ -n $(command -v ufw) ]]; then
     echo -e "${CYAN}Configuring UFW firewall rules...${NC}"

@@ -29,5 +29,5 @@ port    = http,https,8082,8083
 maxretry = 3
 
 _EOL_
- 
+
 systemctl start fail2ban
