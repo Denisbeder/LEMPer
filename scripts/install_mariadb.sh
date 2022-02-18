@@ -58,8 +58,6 @@ systemctl enable mariadb.service
 #systemctl start mariadb
 service mysql start
 
-
-
 ##
 # MariaDB (MySQL) secure installation
 # Ref: https://mariadb.com/kb/en/library/security-of-mariadb-root-account/
