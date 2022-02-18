@@ -86,6 +86,8 @@ mkdir -p "/usr/share/nginx/html/.lemper/tmp"
 mkdir -p "/usr/share/nginx/html/.lemper/php/opcache"
 mkdir -p "/usr/share/nginx/html/.lemper/php/sessions"
 mkdir -p "/usr/share/nginx/html/cgi-bin"
+chown -hR "www-data:www-data" "/usr/share/nginx/html/.lemper"
+chmod -hR g+wrx "/usr/share/nginx/html/.lemper"
 chown -hR "${USERNAME}:www-data" "/home/${USERNAME}"
 chmod -hR g+wrx "/home/${USERNAME}"
 
