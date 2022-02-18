@@ -86,13 +86,15 @@ mkdir -p "/usr/share/nginx/html/.lemper/tmp"
 mkdir -p "/usr/share/nginx/html/.lemper/php/opcache"
 mkdir -p "/usr/share/nginx/html/.lemper/php/sessions"
 mkdir -p "/usr/share/nginx/html/cgi-bin"
-chown -hR "${USERNAME}:${USERNAME}" "/home/${USERNAME}"
+chown -hR "${USERNAME}:www-data" "/home/${USERNAME}"
+chmod -hR g+wrx "/home/${USERNAME}"
 
 # Create PHP log dir.
 if [ ! -d /var/log/php ]; then
     mkdir -p /var/log/php
 fi
 
+# Install Composer
 echo -e "${CYAN}Installing Composer...${NC}"
 EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
