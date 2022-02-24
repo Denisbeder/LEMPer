@@ -4,7 +4,7 @@
 echo -e "${CYAN}[NodeJS Installation]${NC}"
 
 # Install the NodeJS
-curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+curl -sL "https://deb.nodesource.com/setup_${NODEJS_VERSION}.x" -o nodesource_setup.sh
 bash nodesource_setup.sh
 apt update && apt install nodejs
 

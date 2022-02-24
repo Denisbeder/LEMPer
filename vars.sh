@@ -27,6 +27,9 @@ TIMEZONE=America/Campo_Grande
 # It is highly recommended to install PHP version 7.4 or greater.
 PHP_VERSION=7.4
 
+# Use NodeJS version.
+NODEJS_VERSION=16
+
 ### [mysql] ###
 # Leave it blank for auto generated secure password.
 MYSQL_ROOT_PASS=root
