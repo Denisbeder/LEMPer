@@ -15,6 +15,7 @@ source <(grep -v '^#' vars.sh | grep -v '^\[' | sed -E '/^[[:space:]]*$/d' | sed
 ##. ./scripts/enable_swap.sh
 ##. ./scripts/install_certbot.sh
 . ./scripts/install_nginx.sh
+. ./scripts/install_nodejs.sh
 . ./scripts/install_php.sh
 . ./scripts/install_memcached.sh
 . ./scripts/install_redis.sh
