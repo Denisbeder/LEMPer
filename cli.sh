@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SITES_AVALIABLE="etc/nginx/sites-avaliable"
-SITES_ENABLED="etc/nginx/sites-enabled"
-ROOT_PATH_BASE="usr/share/nginx/html"
+SITES_AVALIABLE="/etc/nginx/sites-avaliable"
+SITES_ENABLED="/etc/nginx/sites-enabled"
+ROOT_PATH_BASE="/usr/share/nginx/html"
 VHOST="/etc/nginx/vhost/site_laravel.conf"
 
 printer() {
@@ -12,7 +12,7 @@ printer() {
 echo -n "Enter the name a domain: "
 read DOMAIN
 
-echo -n "Enter the root path for NGINX (/$ROOT_PATH_BASE/$DOMAIN/...): "
+echo -n "Enter the root path for NGINX ($ROOT_PATH_BASE/$DOMAIN/...): "
 read ROOT_PATH
 
 echo -n "User page-cache (yes/no): "
@@ -83,9 +83,9 @@ echo "server {
 }" > $SITES_AVALIABLE/$DOMAIN
 
 # Create link simbolic to domain
-#ln -s "$SITES_AVALIABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
+ln -s "$SITES_AVALIABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
 
 # After set configs restart NGINX
-#systemctl restart nginx.service
+systemctl restart nginx.service
 
 printer Domain name $DOMAIN created on $ROOT_PATH
