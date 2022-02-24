@@ -27,23 +27,23 @@ fi
 # Confirm directory exists
 if [[ ! -d $SITES_AVALIABLE ]]; then
     printer "Creating directory $SITES_AVALIABLE"
-	mkdir -p $SITES_AVALIABLE
+	echo -n "ddc010" | sudo -S mkdir -p $SITES_AVALIABLE
 fi
 
 # Confirm directory exists
 if [[ ! -d $SITES_ENABLED ]]; then
     printer "Creating directory $SITES_ENABLED"
-	mkdir -p $SITES_ENABLED
+	echo -n "ddc010" | sudo -S mkdir -p $SITES_ENABLED
 fi
 
 # Confirm directory exists
 if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
     printer "Creating directory $DOMAIN_PATH/$ROOT_PATH"
-	mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
+	echo -n "ddc010" | sudo -S mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
 fi
 
 # Create server to domain the on NGINX
-echo "server {
+echo -n "ddc010" | sudo -s bash -c 'echo "server {
     listen 80;
     listen [::]:80;
 
@@ -80,12 +80,12 @@ echo "server {
     #include /etc/nginx/includes/error_pages.conf;
 
     include /etc/nginx/includes/fcgiwrap.conf;
-}" > $SITES_AVALIABLE/$DOMAIN
+}" > $SITES_AVALIABLE/$DOMAIN'
 
 # Create link simbolic to domain
-ln -s "$SITES_AVALIABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
+echo -n "ddc010" | sudo -S ln -s "$SITES_AVALIABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
 
 # After set configs restart NGINX
-systemctl restart nginx.service
+echo -n "ddc010" | sudo -S systemctl restart nginx.service
 
 printer Domain name $DOMAIN created on $ROOT_PATH
