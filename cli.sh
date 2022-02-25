@@ -94,7 +94,7 @@ echo "server {
 }" > $SITES_AVAILABLE/$DOMAIN
 
 # Create link simbolic to domain
-ln -s "$SITES_AVAILABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
+ln -s "$SITES_AVAILABLE/$DOMAIN" $SITES_ENABLED
 
 # After set configs restart NGINX
 systemctl restart nginx.service
