@@ -101,4 +101,4 @@ fi
 # After set configs restart NGINX
 systemctl restart nginx.service
 
-printer Domain name $DOMAIN created on: \n$DOMAIN_PATH/$ROOT_PATH \n$SITES_AVAILABLE/$DOMAIN
+echo -e "Domain name $DOMAIN created on: \n$DOMAIN_PATH \n$SITES_AVAILABLE/$DOMAIN"
