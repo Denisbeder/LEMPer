@@ -80,7 +80,7 @@ echo "server {
     include $VHOST;
 
     location ~ \.php$ {
-        try_files $uri =404;
+        try_files \$uri =404;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_index index.php;
         include /etc/nginx/fastcgi_params;
