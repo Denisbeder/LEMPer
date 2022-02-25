@@ -11,7 +11,7 @@ else
     real_user=$(whoami)
 fi
 
-SITES_AVALIABLE="/etc/nginx/sites-avaliable"
+SITES_AVAILABLE="/etc/nginx/sites-available"
 SITES_ENABLED="/etc/nginx/sites-enabled"
 ROOT_PATH_BASE="/usr/share/nginx/html"
 VHOST="/etc/nginx/vhost/site_laravel.conf"
@@ -36,9 +36,9 @@ if [[ "$USE_PAGE_CACHE" == "yes" ]]; then
 fi
 
 # Confirm directory exists
-if [[ ! -d $SITES_AVALIABLE ]]; then
-    printer "Creating directory $SITES_AVALIABLE"
-	mkdir -p $SITES_AVALIABLE
+if [[ ! -d $SITES_AVAILABLE ]]; then
+    printer "Creating directory $SITES_AVAILABLE"
+	mkdir -p $SITES_AVAILABLE
 fi
 
 # Confirm directory exists
@@ -91,10 +91,10 @@ echo "server {
     #include /etc/nginx/includes/error_pages.conf;
 
     include /etc/nginx/includes/fcgiwrap.conf;
-}" > $SITES_AVALIABLE/$DOMAIN
+}" > $SITES_AVAILABLE/$DOMAIN
 
 # Create link simbolic to domain
-ln -s "$SITES_AVALIABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
+ln -s "$SITES_AVAILABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
 
 # After set configs restart NGINX
 systemctl restart nginx.service
