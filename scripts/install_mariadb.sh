@@ -93,9 +93,9 @@ SQL_QUERY="${SQL_QUERY}
 SQL_QUERY="${SQL_QUERY}
         CREATE DATABASE ${MYSQL_DATABASE_NAME};
         CREATE USER '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}' IDENTIFIED BY '${MYSQL_PASS}';
-        GRANT ALL PRIVILEGES ON '*'.'*' TO '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}';
+        GRANT ALL PRIVILEGES ON \*.\* TO '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}';
         USE mysql;
-        UPDATE user SET plugin='unix_socket' WHERE ;"
+        UPDATE user SET plugin='unix_socket' WHERE User='${MYSQL_USERNAME}';"
 
 # Flush the privileges tables.
 SQL_QUERY="${SQL_QUERY}
