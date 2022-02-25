@@ -1,5 +1,16 @@
 #!/bin/bash
 
+if ! [ $(id -u) = 0 ]; then
+   echo "The script need to be run as root." >&2
+   exit 1
+fi
+
+if [ $SUDO_USER ]; then
+    real_user=$SUDO_USER
+else
+    real_user=$(whoami)
+fi
+
 SITES_AVALIABLE="/etc/nginx/sites-avaliable"
 SITES_ENABLED="/etc/nginx/sites-enabled"
 ROOT_PATH_BASE="/usr/share/nginx/html"
@@ -27,23 +38,23 @@ fi
 # Confirm directory exists
 if [[ ! -d $SITES_AVALIABLE ]]; then
     printer "Creating directory $SITES_AVALIABLE"
-	echo -n "ddc010" | sudo -S mkdir -p $SITES_AVALIABLE
+	mkdir -p $SITES_AVALIABLE
 fi
 
 # Confirm directory exists
 if [[ ! -d $SITES_ENABLED ]]; then
     printer "Creating directory $SITES_ENABLED"
-	echo -n "ddc010" | sudo -S mkdir -p $SITES_ENABLED
+	mkdir -p $SITES_ENABLED
 fi
 
 # Confirm directory exists
 if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
     printer "Creating directory $DOMAIN_PATH/$ROOT_PATH"
-	echo -n "ddc010" | sudo -S mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
+	mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
 fi
 
 # Create server to domain the on NGINX
-echo -n "ddc010" | sudo -s bash -c 'echo "server {
+echo "server {
     listen 80;
     listen [::]:80;
 
@@ -80,12 +91,12 @@ echo -n "ddc010" | sudo -s bash -c 'echo "server {
     #include /etc/nginx/includes/error_pages.conf;
 
     include /etc/nginx/includes/fcgiwrap.conf;
-}" > $SITES_AVALIABLE/$DOMAIN'
+}" > $SITES_AVALIABLE/$DOMAIN
 
 # Create link simbolic to domain
-echo -n "ddc010" | sudo -S ln -s "$SITES_AVALIABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
+ln -s "$SITES_AVALIABLE/$DOMAIN" "$SITES_ENABLED/$DOMAIN" 
 
 # After set configs restart NGINX
-echo -n "ddc010" | sudo -S systemctl restart nginx.service
+systemctl restart nginx.service
 
 printer Domain name $DOMAIN created on $ROOT_PATH
