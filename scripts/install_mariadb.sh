@@ -66,7 +66,6 @@ echo -e "${CYAN}Securing MariaDB (MySQL) Installation...${NC}"
 
 # Ref: https://bertvv.github.io/notes-to-self/2015/11/16/automating-mysql_secure_installation/
 MYSQL_ROOT_PASS=${MYSQL_ROOT_PASS:-$(openssl rand -base64 64 | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1)}
-SQL_QUERY=""
 
 # Setting the database root password.
 SQL_QUERY="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASS}';"
@@ -94,7 +93,7 @@ SQL_QUERY="${SQL_QUERY}
 SQL_QUERY="${SQL_QUERY}
         CREATE DATABASE ${MYSQL_DATABASE_NAME};
         CREATE USER '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}' IDENTIFIED BY '${MYSQL_PASS}';
-        GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}';
+        GRANT ALL PRIVILEGES ON '*'.'*' TO '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}';
         USE mysql;
         UPDATE user SET plugin='unix_socket' WHERE ;"
 
