@@ -51,6 +51,7 @@ fi
 if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
     printer "Creating directory $DOMAIN_PATH/$ROOT_PATH"
 	mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
+    chown -R $USER:$USER "$DOMAIN_PATH/$ROOT_PATH"
 fi
 
 # Create server to domain the on NGINX
