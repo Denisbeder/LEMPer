@@ -112,7 +112,7 @@ SQL_QUERY="${SQL_QUERY}
 mysql_upgrade -u root -p${MYSQL_ROOT_PASS} --force
 
 # Root password is blank for newly installed MariaDB (MySQL).
-if mysql --user=root --password="" -e "${SQL_QUERY}"; then
+if mysql --user=root --password="${MYSQL_ROOT_PASS}" -e "${SQL_QUERY}"; then
     echo -e "${GREEN}Securing MariaDB (MySQL) installation has been done.${NC}"
 else
     echo -e "${RED}Unable to secure MariaDB (MySQL) installation.${NC}"
