@@ -93,8 +93,10 @@ echo "server {
     include /etc/nginx/includes/fcgiwrap.conf;
 }" > $SITES_AVAILABLE/$DOMAIN
 
-# Create link simbolic to domain
-ln -s "$SITES_AVAILABLE/$DOMAIN" $SITES_ENABLED
+# Create link simbolic to domain when not exists
+if [[ ! -f "$SITES_ENABLED/$DOMAIN" ]]; then
+    ln -s "$SITES_AVAILABLE/$DOMAIN" $SITES_ENABLED
+fi
 
 # After set configs restart NGINX
 systemctl restart nginx.service
