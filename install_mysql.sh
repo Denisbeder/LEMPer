@@ -13,8 +13,8 @@ export DEBIAN_FRONTEND=noninteractive
 . ./scripts/install_dependencies.sh
 ##. ./scripts/enable_swap.sh
 . ./scripts/create_account.sh
-. ./scripts/install_mariadb.sh
 . ./scripts/install_fail2ban.sh
 . ./scripts/install_secure.sh
+. ./scripts/install_mariadb.sh
 
 ##. ./scripts/remove_swap.sh
