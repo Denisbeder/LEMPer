@@ -33,7 +33,7 @@ NODEJS_VERSION=16
 ### [mysql] ###
 # Leave it blank for auto generated secure password.
 MYSQL_ROOT_PASS=root
-MYSQL_DATABASE_NAME=site
-MYSQL_USERNAME=user
-MYSQL_PASS=secret
+MYSQL_DATABASE_NAME=default
+MYSQL_USERNAME=lemper
+MYSQL_PASS=lemper
 MYSQL_BIND_ADDRESS=127.0.0.1
