@@ -47,8 +47,10 @@ fi
 if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
     echo "Creating directory $DOMAIN_PATH/$ROOT_PATH"
 	mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
-    chown -R dev:dev "$DOMAIN_PATH/$ROOT_PATH"
 fi
+
+# Change permissions
+chown -R dev:dev "$DOMAIN_PATH/$ROOT_PATH"
 
 # Create server to domain the on NGINX
 echo "server {
