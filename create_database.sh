@@ -42,7 +42,8 @@ if [[ "$CREATE_USER" == "yes" ]]; then
         CREATE USER IF NOT EXISTS '${USER_NAME}'@'localhost' IDENTIFIED BY '${USER_PASS}';
         GRANT ALL PRIVILEGES ON *.* TO '${USER_NAME}'@'localhost';
         USE mysql;
-        UPDATE user SET plugin='unix_socket' WHERE User='${USER_NAME}';"
+        UPDATE user SET plugin='unix_socket' WHERE User='${USER_NAME}';
+        FLUSH PRIVILEGES;"
 fi
 
 # Root password is blank for newly installed MariaDB (MySQL).
