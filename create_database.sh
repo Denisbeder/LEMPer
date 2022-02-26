@@ -47,7 +47,7 @@ fi
 
 # Root password is blank for newly installed MariaDB (MySQL).
 if mysql --user=root --password="${MYSQL_ROOT_PASS}" -e "${SQL_QUERY}"; then
-    echo -e "Database name '${DB_NAME}' created to user '${USER_NAME}' and password '${USER_PASS}'"
+    echo -e "Database name '${DB_NAME}' created to user '${USER_NAME:-$MYSQL_DATABASE_NAME}' and password '${USER_PASS:-$MYSQL_PASS}'"
 else
     echo -e "The database could not be created."
 fi
