@@ -50,8 +50,7 @@ if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
 fi
 
 # Change permissions
-echo "Change permissions to $DOMAIN_PATH/$ROOT_PATH"
-chown -R dev:dev "$DOMAIN_PATH/$ROOT_PATH"
+chown -R dev:dev "$DOMAIN_PATH"
 
 # Create server to domain the on NGINX
 echo "server {
