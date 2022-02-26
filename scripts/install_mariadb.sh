@@ -98,18 +98,16 @@ SQL_QUERY="${SQL_QUERY}
         CREATE USER IF NOT EXISTS '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}' IDENTIFIED BY '${MYSQL_PASS}';
         GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}';
         CREATE USER IF NOT EXISTS '${MYSQL_USERNAME}'@'localhost' IDENTIFIED BY '${MYSQL_PASS}';
-        GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USERNAME}'@'localhost';
-        USE mysql;
-        UPDATE user SET plugin='unix_socket' WHERE User='${MYSQL_USERNAME}';"
+        GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USERNAME}'@'localhost';"
 
 # Flush the privileges tables.
 SQL_QUERY="${SQL_QUERY}
         FLUSH PRIVILEGES;"
 
 # Fix error: ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO).
-SQL_QUERY="${SQL_QUERY}
-        USE mysql;
-        UPDATE user SET plugin='unix_socket' WHERE User='root';"
+# SQL_QUERY="${SQL_QUERY}
+#         USE mysql;
+#         UPDATE user SET plugin='unix_socket' WHERE User='root';"
 
 # mysql_upgrade saves the MySQL version number in a file named mysql_upgrade_info in the data directory. 
 # This is used to quickly check whether all tables have been checked for this release so that table-checking can be skipped
