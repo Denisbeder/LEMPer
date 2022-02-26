@@ -16,10 +16,6 @@ SITES_ENABLED="/etc/nginx/sites-enabled"
 ROOT_PATH_BASE="/usr/share/nginx/html"
 VHOST="/etc/nginx/vhost/site_laravel.conf"
 
-printer() {
-	echo "$@"
-}
-
 echo -n "Enter the name a domain: "
 read DOMAIN
 
@@ -37,19 +33,19 @@ fi
 
 # Confirm directory exists
 if [[ ! -d $SITES_AVAILABLE ]]; then
-    printer "Creating directory $SITES_AVAILABLE"
+    echo "Creating directory $SITES_AVAILABLE"
 	mkdir -p $SITES_AVAILABLE
 fi
 
 # Confirm directory exists
 if [[ ! -d $SITES_ENABLED ]]; then
-    printer "Creating directory $SITES_ENABLED"
+    echo "Creating directory $SITES_ENABLED"
 	mkdir -p $SITES_ENABLED
 fi
 
 # Confirm directory exists
 if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
-    printer "Creating directory $DOMAIN_PATH/$ROOT_PATH"
+    echo "Creating directory $DOMAIN_PATH/$ROOT_PATH"
 	mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
     chown -R $USER:$USER "$DOMAIN_PATH/$ROOT_PATH"
 fi

@@ -3,7 +3,7 @@
 ### MariaDB installation ###
 echo -e "${CYAN}[MariaDB (MySQL drop-in replacement) Installation]${NC}"
 
-apt install -yqq libmariadb3 mariadb-common mariadb-server
+apt install -yqq libmariadb3 mariadb-common mariadb-server mariadb-backup
 
 # Configure MySQL installation.
 echo -e "${CYAN}Configure MySQL installation${NC}"
@@ -89,11 +89,16 @@ SQL_QUERY="${SQL_QUERY}
 #CREATE USER 'site'@'10.116.80.2' IDENTIFIED BY 'BLSLtXzPWW@M';
 #GRANT ALL PRIVILEGES ON site.* TO 'site'@'10.116.80.2';
 
+ CREATE USER IF NOT EXISTS 'lemper'@'localhost' IDENTIFIED BY 'lemper';
+ GRANT ALL PRIVILEGES ON *.* TO 'lemper'@'localhost';
+
 # Remove the test database.
 SQL_QUERY="${SQL_QUERY}
         CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE_NAME};
         CREATE USER IF NOT EXISTS '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}' IDENTIFIED BY '${MYSQL_PASS}';
         GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USERNAME}'@'${MYSQL_BIND_ADDRESS}';
+        CREATE USER IF NOT EXISTS '${MYSQL_USERNAME}'@'localhost' IDENTIFIED BY '${MYSQL_PASS}';
+        GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USERNAME}'@'localhost';
         USE mysql;
         UPDATE user SET plugin='unix_socket' WHERE User='${MYSQL_USERNAME}';"
 
