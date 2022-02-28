@@ -5,14 +5,13 @@
 #    exit 1 
 # fi
 
-# if [ $SUDO_USER ]; then
-#     real_user=$SUDO_USER
-# else
-#     real_user=$(whoami)
-# fi
+# Absolute path to this script. /home/user/bin/foo.sh
+SCRIPT=$(readlink -f $0)
+# Absolute path this script is in. /home/user/bin
+SCRIPT_PATH=`dirname $SCRIPT`
 
 ### Include variables ###
-source <(grep -v '^#' vars.sh | grep -v '^\[' | sed -E '/^[[:space:]]*$/d' | sed -E 's/\r/ /g')
+source <(grep -v '^#' ${SCRIPT_PATH}/vars.sh | grep -v '^\[' | sed -E '/^[[:space:]]*$/d' | sed -E 's/\r/ /g')
 
 echo -n "Enter the name a database: "
 read DB_NAME

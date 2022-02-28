@@ -5,12 +5,6 @@ if ! [ $(id -u) = 0 ]; then
    exit 1 
 fi
 
-if [ $SUDO_USER ]; then
-    real_user=$SUDO_USER
-else
-    real_user=$(whoami)
-fi
-
 SITES_AVAILABLE="/etc/nginx/sites-available"
 SITES_ENABLED="/etc/nginx/sites-enabled"
 ROOT_PATH_BASE="/usr/share/nginx/html"
