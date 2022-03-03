@@ -30,7 +30,12 @@ if [[ ! -f "$CURRENT_PATH/artisan" ]]; then
     cd $PATH_APP    
 fi
 
-php artisan optimize:clear
+echo -n "Use this PHP version (7.2 - 7.4 - 8.1 - etc): "
+read PHPv
+
+PHP_VERSION=${PHPv:-7.4}
+
+php${PHP_VERSION} artisan optimize:clear
 systemctl stop php${PHP_VERSION}-fpm && systemctl stop nginx 
 echo "Services 'php${PHP_VERSION}-fpm' and 'nginx' STOPED";
 
