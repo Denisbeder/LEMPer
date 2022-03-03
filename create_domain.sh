@@ -7,7 +7,7 @@ fi
 
 # Confirm directory NGINX exists
 if [[ ! -d "/etc/nginx" ]]; then
-    echo "Not found '/etc/nginx' direcotry. Please ensure has NGINX installed"
+    echo "Not found '/etc/nginx' directory. Please ensure has NGINX installed"
 	exit 1
 fi
 
