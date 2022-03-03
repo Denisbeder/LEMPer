@@ -53,7 +53,7 @@ apt install -yqq language-pack-en-base
 export LC_ALL=en_US.UTF-8 
 export LANG=en_US.UTF-8 
 apt install -yqq software-properties-common
-add-apt-repositoyry ppa:ondrej/php5
+add-apt-repository -y ppa:ondrej/php
 apt-update
 
 apt install -yqq ${PHP_PKGS[@]}
