@@ -34,7 +34,7 @@ php artisan optimize:clear
 systemctl stop php${PHP_VERSION}-fpm && systemctl stop nginx 
 echo "Services 'php${PHP_VERSION}-fpm' and 'nginx' STOPED";
 
-chown -R $USER:www-data storage/ bootstrap/cache/
+chown -R $USERNAME:www-data storage/ bootstrap/cache/
 chmod -R 775 storage/ bootstrap/cache/
 echo "Permissions changed for 'storage/' 'bootstrap/cache/'"
 

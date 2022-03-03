@@ -5,6 +5,12 @@ if ! [ $(id -u) = 0 ]; then
    exit 1 
 fi
 
+# Confirm directory NGINX exists
+if [[ ! -d "/etc/nginx" ]]; then
+    echo "Not found '/etc/nginx' direcotry. Please ensure has NGINX installed"
+	exit 1
+fi
+
 SITES_AVAILABLE="/etc/nginx/sites-available"
 SITES_ENABLED="/etc/nginx/sites-enabled"
 ROOT_PATH_BASE="/usr/share/nginx/html"
