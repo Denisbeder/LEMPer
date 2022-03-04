@@ -7,7 +7,7 @@ fi
 
 # Confirm directory NGINX exists
 if [[ ! -d "/etc/nginx" ]]; then
-    echo "Not found '/etc/nginx' directory. Please ensure has NGINX installed"
+    echo "Not found '/etc/nginx' directory. Please ensure has NGINX installed."
 	exit 1
 fi
 
@@ -22,7 +22,10 @@ read DOMAIN
 echo -n "Enter the root path for NGINX ($ROOT_PATH_BASE/$DOMAIN/...): "
 read ROOT_PATH
 
-echo -n "User page-cache (yes/no): "
+echo -n "You want create the root path ($DOMAIN_PATH/$ROOT_PATH): "
+read CREATE_ROOT_PATH
+
+echo -n "User JosephSilber/page-cache Laravel Package (yes/no): "
 read USE_PAGE_CACHE
 
 DOMAIN_PATH="$ROOT_PATH_BASE/$DOMAIN"
@@ -44,9 +47,11 @@ if [[ ! -d $SITES_ENABLED ]]; then
 fi
 
 # Confirm directory exists
-if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
-    echo "Creating directory $DOMAIN_PATH/$ROOT_PATH"
-	mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
+if [[ $CREATE_ROOT_PATH ]]; then
+    if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
+        echo "Creating directory $DOMAIN_PATH/$ROOT_PATH"
+        mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
+    fi
 fi
 
 # Change permissions
