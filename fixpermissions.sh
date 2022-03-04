@@ -40,7 +40,12 @@ systemctl stop php${PHP_VERSION}-fpm && systemctl stop nginx
 echo "Services 'php${PHP_VERSION}-fpm' and 'nginx' STOPED";
 
 chown -R $USERNAME:www-data storage/ bootstrap/cache/
-chmod -R 775 storage/ bootstrap/cache/
+# Apply permissions to files
+find ${PWD}/storage/ -type f -exec chmod 664 {} \; && find ${PWD}/bootstrap/cache/ -type f -exec chmod 664 {} \;
+
+# Apply permissions to directorys
+find ${PWD}/storage/ -type d -exec chmod 755 {} \; && find ${PWD}/bootstrap/cache/ -type d -exec chmod 755 {} \;
+
 echo "Permissions changed for 'storage/' 'bootstrap/cache/'"
 
 systemctl start php${PHP_VERSION}-fpm && systemctl start nginx
