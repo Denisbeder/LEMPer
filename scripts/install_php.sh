@@ -102,6 +102,8 @@ curl -sS https://getcomposer.org/installer | php
 chmod +x composer.phar
 mv composer.phar /usr/local/bin/composer
 composer self-update 
+PATH_COMPOSER=$(wich composer)
+export PATH="$PATH:${PATH_COMPOSER"
 
 # Restart PHP-fpm server.
 if [[ $(pgrep -c "php-fpm${PHPv}") -gt 0 ]]; then
