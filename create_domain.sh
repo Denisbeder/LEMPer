@@ -19,16 +19,16 @@ VHOST="/etc/nginx/vhost/site_laravel.conf"
 echo -n "Enter the name a domain: "
 read DOMAIN
 
+DOMAIN_PATH="$ROOT_PATH_BASE/$DOMAIN"
+
 echo -n "Enter the root path for NGINX ($ROOT_PATH_BASE/$DOMAIN/...): "
 read ROOT_PATH
 
-echo -n "You want create the root path ($DOMAIN_PATH/$ROOT_PATH): "
+echo -n "You want create the root path $DOMAIN_PATH/$ROOT_PATH (yes/no): "
 read CREATE_ROOT_PATH
 
 echo -n "User JosephSilber/page-cache Laravel Package (yes/no): "
 read USE_PAGE_CACHE
-
-DOMAIN_PATH="$ROOT_PATH_BASE/$DOMAIN"
 
 if [[ "$USE_PAGE_CACHE" == "yes" ]]; then
 	VHOST="/etc/nginx/vhost/site_laravel_page_cache.conf"
@@ -47,7 +47,7 @@ if [[ ! -d $SITES_ENABLED ]]; then
 fi
 
 # Confirm directory exists
-if [[ $CREATE_ROOT_PATH ]]; then
+if [[ "$CREATE_ROOT_PATH" == "yes" ]]; then
     if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
         echo "Creating directory $DOMAIN_PATH/$ROOT_PATH"
         mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
