@@ -67,7 +67,7 @@ echo "server {
     listen 80;
     listen [::]:80;
 
-    server_name $DOMAIN;
+    server_name $DOMAIN *.$DOMAIN;
 
     #include /etc/nginx/includes/ssl.conf;
     
