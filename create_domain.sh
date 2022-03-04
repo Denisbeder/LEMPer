@@ -27,6 +27,11 @@ read ROOT_PATH
 echo -n "You want create the root path $DOMAIN_PATH/$ROOT_PATH (yes/no): "
 read CREATE_ROOT_PATH
 
+echo -n "Select PHP Version to $DOMAIN_PATH (7.2 - 7.4 - 8.0 - 8.1): "
+read PHPv
+
+PHP_VERSION=${PHPv:-7.4}
+
 echo -n "User JosephSilber/page-cache Laravel Package (yes/no): "
 read USE_PAGE_CACHE
 
@@ -89,7 +94,7 @@ echo "server {
         fastcgi_index index.php;
         include /etc/nginx/fastcgi_params;
         include /etc/nginx/includes/fastcgi.conf;
-        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        fastcgi_pass unix:/run/php/php${PHP_VERSION}-fpm.sock;
     }
 
     #include /etc/nginx/includes/error_pages.conf;
