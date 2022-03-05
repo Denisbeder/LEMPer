@@ -37,3 +37,9 @@ MYSQL_DATABASE_NAME=lemper
 MYSQL_USERNAME=lemper
 MYSQL_PASS=lemper
 MYSQL_BIND_ADDRESS=127.0.0.1
+
+### [minio] ###
+MINIO_ROOT_USER=minio
+MINIO_ROOT_PASSWORD=miniostorage
+MINIO_VOLUMES=/usr/local/share/minio/
+MINIO_IP=127.0.0.1

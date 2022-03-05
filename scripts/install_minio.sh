@@ -23,10 +23,10 @@ useradd -r minio-user -s /sbin/nologin
 chown minio-user:minio-user /usr/local/bin/minio
 
 # Now create a directory where storage de files of buckets
-mkdir /usr/local/share/minio
+mkdir ${MINIO_VOLUMES}
 
 # Set the owner to storage buckets directory to minio-user 
-chown minio-user:minio-user /usr/local/share/minio
+chown minio-user:minio-user ${MINIO_VOLUMES}
 
 # Create directory of configuration for minio
 mkdir /etc/minio
@@ -35,10 +35,10 @@ mkdir /etc/minio
 chown minio-user:minio-user /etc/minio
 
 # Create file env to minio
-echo 'MINIO_ROOT_USER="minio"
-    MINIO_ROOT_PASSWORD="miniostorage"
-    MINIO_VOLUMES="/usr/local/share/minio/"
-    MINIO_OPTS="-C /etc/minio --address 127.0.0.1:9000"' > /etc/default/minio
+echo "MINIO_ROOT_USER=${MINIO_ROOT_USER}
+    MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    MINIO_VOLUMES=${MINIO_VOLUMES}
+    MINIO_OPTS=\"-C /etc/minio --address ${MINIO_IP}:9000\"" > /etc/default/minio
 
 echo -e "${CYAN}[Install script of initialization Systemd]${NC}"
 
