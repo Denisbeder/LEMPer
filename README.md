@@ -34,6 +34,12 @@ sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git &&
 sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git && cd LEMPer && sudo chmod +x ./install_mysql.sh && sudo ./install_mysql.sh
 ```
 
+### Install LEMPer MINIO stack
+
+```bash
+sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git && cd LEMPer && sudo chmod +x ./install_minio.sh && sudo ./install_minio.sh
+```
+
 ## TODO
 
 * ~~Custom build latest [Nginx](https://nginx.org/en/) from source~~
