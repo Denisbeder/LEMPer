@@ -57,6 +57,13 @@ systemctl enable minio
 # Initialize minio
 systemctl start minio
 
+if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+     echo -e "${CYAN}[Don't configure UFW on WSL]${NC}"
+else
+    # Enable firewall access to the Minio server on the configured port
+    ufw allow 9000
+fi
+
 # Installation status.
 if [[ $(pgrep -c minio) -gt 0 ]]; then
     systemctl restart minio
