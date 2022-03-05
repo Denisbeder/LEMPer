@@ -67,8 +67,8 @@ fi
 # Installation status.
 if [[ $(pgrep -c minio) -gt 0 ]]; then
     systemctl restart minio
-
     echo -e "${GREEN}Minio restarted successfully.${NC}"
+    systemctl status minio
 elif [[ -n $(command -v minio) ]]; then
     systemctl start minio
     
