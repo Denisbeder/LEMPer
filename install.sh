@@ -30,3 +30,10 @@ source <(grep -v '^#' ${SCRIPT_PATH}/vars.sh | grep -v '^\[' | sed -E '/^[[:spac
 . ./scripts/install_nodejs.sh
 
 ##. ./scripts/remove_swap.sh
+
+ech -n "Do you want create a new domain? (yes/no)"
+read CREATE_NEW_DOMAIN
+
+if [ $CREATE_NEW_DOMAIN == "yes" ]; then
+. ./create_domain.sh
+fi
