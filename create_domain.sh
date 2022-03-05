@@ -21,18 +21,41 @@ read DOMAIN
 
 DOMAIN_PATH="$ROOT_PATH_BASE/$DOMAIN"
 
-echo -n "Enter the root path for NGINX ($ROOT_PATH_BASE/$DOMAIN/...): "
-read ROOT_PATH
-
-echo -n "You want create the root path $DOMAIN_PATH/$ROOT_PATH (yes/no): "
-read CREATE_ROOT_PATH
-
 echo -n "Select PHP Version to $DOMAIN_PATH (7.2 - 7.4 - 8.0 - 8.1): "
 read PHPv
 
 PHP_VERSION=${PHPv:-7.4}
 
-echo -n "User JosephSilber/page-cache Laravel Package (yes/no): "
+echo -n "Create CRONTAB for Laravel 'schedule' to this domain? (yes/no): "
+read CREATE_CRONTAB
+
+echo -n "Create WORKER for Laravel 'queue' to this domain? (yes/no): "
+read CREATE_WORKER
+
+if [[ "$CREATE_CRONTAB" == "yes" || "$CREATE_WORKER" == "yes" ]]; then
+    if [[ ! -f "$PWD/artisan" ]]; then
+        echo -n "Where is the path to Laravel ARTISAN? (empty=default): "
+        read PATH_ARTISAN
+        # Condition ternary. If variable $PATH_ARTISAN is empty then set to current directory
+        [ $PATH_ARTISAN ] && PATH_ARTISAN=$PATH_ARTISAN || PATH_ARTISAN=$DOMAIN_PATH
+    fi
+fi
+
+if [[ "$CREATE_WORKER" == "yes" ]]; then
+    echo "Creating this WORK on /etc/supervisor/conf.d/laravel-worker-$DOMAIN.conf"
+    echo "[program:laravel-worker-${DOMAIN}]
+        process_name=%(program_name)s_%(process_num)02d
+        command=php ${PATH_ARTISAN}/artisan queue:work --sleep=3 --tries=3
+        autostart=true
+        autorestart=true
+        user=$(whoami)
+        numprocs=1
+        redirect_stderr=true
+        stdout_logfile=${DOMAIN_PATH}/worker.log
+        stopwaitsecs=3600" > /etc/supervisor/conf.d/laravel-worker-$DOMAIN.conf
+fi
+
+echo -n "User JosephSilber/page-cache Laravel Package? (yes/no): "
 read USE_PAGE_CACHE
 
 if [[ "$USE_PAGE_CACHE" == "yes" ]]; then
@@ -51,16 +74,14 @@ if [[ ! -d $SITES_ENABLED ]]; then
 	mkdir -p $SITES_ENABLED
 fi
 
-# Confirm directory exists
-if [[ "$CREATE_ROOT_PATH" == "yes" ]]; then
-    if [[ ! -d "$DOMAIN_PATH/$ROOT_PATH" ]]; then
-        echo "Creating directory $DOMAIN_PATH/$ROOT_PATH"
-        mkdir -p "$DOMAIN_PATH/$ROOT_PATH"
-    fi
+# Confirm if is to create CRONTAB
+if [[ "$CREATE_CRONTAB" == "yes" ]]; then
+    echo "Creating this CRONTAB: * * * * * www-data cd ${PATH_ARTISAN} && php artisan schedule:run >> /dev/null 2>&1"
+    echo "* * * * * www-data cd ${PATH_ARTISAN} && php artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab
 fi
 
 # Change permissions
-chown -R dev:dev "$DOMAIN_PATH"
+chown -R $(whoami):www-data "$DOMAIN_PATH"
 
 # Create server to domain the on NGINX
 echo "server {
@@ -79,7 +100,7 @@ echo "server {
     access_log /var/log/nginx/$DOMAIN.access.log;
     error_log /var/log/nginx/$DOMAIN.error.log;
 
-    root /usr/share/nginx/html/$DOMAIN/$ROOT_PATH;
+    root $DOMAIN_PATH/public;
     index index.php index.html index.htm;
 
     include /etc/nginx/includes/rules_security.conf;
