@@ -10,7 +10,7 @@ apt-get purge nginx-core nginx-common nginx -yqq && apt-get autoremove -yqq
 apt-get update -yqq
 
 # Install custom Nginx package
-apt-get install nginx -yqq
+apt-get install nginx mariadb-client -yqq
 
 echo -e "${CYAN}Creating Nginx configuration...${NC}"
 
