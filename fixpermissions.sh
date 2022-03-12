@@ -39,7 +39,7 @@ php${PHP_VERSION} artisan optimize:clear
 systemctl stop php${PHP_VERSION}-fpm && systemctl stop nginx 
 echo "Services 'php${PHP_VERSION}-fpm' and 'nginx' STOPED";
 
-chown -R $USERNAME:www-data storage/ bootstrap/cache/
+chown -R $USERNAME:www-data .
 
 # add permission only this folders
 chmod ug="rwx",o="" bootstrap/cache/ storage/
