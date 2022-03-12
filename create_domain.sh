@@ -21,6 +21,11 @@ read DOMAIN
 
 DOMAIN_PATH="$ROOT_PATH_BASE/$DOMAIN"
 
+# verify if project directory exists before proceed
+if [[ ! -d $DOMAIN_PATH ]]; then
+    echo "This directory $DOMAIN_PATH not exists. First create this directory in $ROOT_PATH_BASE and install the project Laravel before run this script."
+fi
+
 echo -n "Select PHP Version to $DOMAIN_PATH (7.2 - 7.4 - 8.0 - 8.1): "
 read PHPv
 

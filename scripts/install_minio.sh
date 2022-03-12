@@ -36,9 +36,9 @@ chown minio-user:minio-user /etc/minio
 
 # Create file env to minio
 echo "MINIO_ROOT_USER=${MINIO_ROOT_USER}
-    MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
-    MINIO_VOLUMES=${MINIO_VOLUMES}
-    MINIO_OPTS=\"-C /etc/minio --address ${MINIO_IP}:9000\"" > /etc/default/minio
+MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+MINIO_VOLUMES=${MINIO_VOLUMES}
+MINIO_OPTS=\"-C /etc/minio --address ${MINIO_IP}:9000\"" > /etc/default/minio
 
 echo -e "${CYAN}[Install script of initialization Systemd]${NC}"
 
