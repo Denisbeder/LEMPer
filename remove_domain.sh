@@ -13,7 +13,7 @@ SITES_ENABLED="/etc/nginx/sites-enabled"
 ROOT_PATH_BASE="/usr/share/nginx/html"
 
 # remove directory of domain
-rm -rf $ROOT_PATH_BASE/$DOMAIN
+rm -rf $ROOT_PATH_BASE/$DOMAIN >> /dev/null 2>&1
 
 # Delete line schedule of CRONTAB
 sed -i "/$DOMAIN/d" /etc/crontab
@@ -27,4 +27,4 @@ rm -f $SITES_AVAILABLE/$DOMAIN $SITES_ENABLED/$DOMAIN >> /dev/null 2>&1
 # After set configs restart NGINX
 systemctl restart nginx.service
 
-echo -e "Domain name $DOMAIN was removed
+echo -e "Domain name $DOMAIN was removed"
