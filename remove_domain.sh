@@ -10,6 +10,10 @@ read DOMAIN
 
 SITES_AVAILABLE="/etc/nginx/sites-available"
 SITES_ENABLED="/etc/nginx/sites-enabled"
+ROOT_PATH_BASE="/usr/share/nginx/html"
+
+# remove directory of domain
+rm -rf $ROOT_PATH_BASE/$DOMAIN
 
 # Delete line schedule of CRONTAB
 sed -i "/$DOMAIN/d" /etc/crontab
