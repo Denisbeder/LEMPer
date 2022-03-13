@@ -84,7 +84,7 @@ sed -i "s/worker_processes\ auto/worker_processes\ ${CPU_CORES}/g" /etc/nginx/ng
 sed -i "s/worker_connections\ 4096/worker_connections\ ${NGX_CONNECTIONS}/g" /etc/nginx/nginx.conf
 
 # Make default server accessible from hostname or IP address.
-run sed -i "s/localhost.localdomain/${HOSTNAME}/g" /etc/nginx/sites-available/default
+sed -i "s/localhost.localdomain/${HOSTNAME}/g" /etc/nginx/sites-available/default
 
 # Restart Nginx server
 echo -e "${CYAN}Starting Nginx HTTP server...${NC}"
