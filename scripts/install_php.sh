@@ -3,6 +3,17 @@
 ### Nginx installation ###
 echo -e "${CYAN}[PHP & FPM Packages Installation]${NC}"
 
+# Install the repository ppa:ondrej/php, which will give you all your versions of PHP
+apt install -yqq language-pack-en-base
+export LC_ALL=en_US.UTF-8 
+export LANG=en_US.UTF-8 
+apt install -yqq software-properties-common
+add-apt-repository -y ppa:ondrej/php
+apt-update
+
+apt install -yqq php-pear php-xml pkg-php-tools spawn-fcgi fcgiwrap
+apt -yqq autoremove
+
 for v in ${PHP_VERSION[@]}; do
     PHPv=v
 
@@ -43,19 +54,7 @@ for v in ${PHP_VERSION[@]}; do
     php${PHPv}-xmlrpc
     php${PHPv}-xsl
     php${PHPv}-zip
-    php-pear
-    php-xml
-    pkg-php-tools
-    spawn-fcgi fcgiwrap
     ")
-
-    # Install the repository ppa:ondrej/php, which will give you all your versions of PHP
-    apt install -yqq language-pack-en-base
-    export LC_ALL=en_US.UTF-8 
-    export LANG=en_US.UTF-8 
-    apt install -yqq software-properties-common
-    add-apt-repository -y ppa:ondrej/php
-    apt-update
 
     apt install -yqq ${PHP_PKGS[@]}
 
