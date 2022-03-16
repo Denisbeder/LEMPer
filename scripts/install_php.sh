@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-### Nginx installation ###
+### PHP installation ###
 echo -e "${CYAN}[PHP & FPM Packages Installation]${NC}"
 
 # Install the repository ppa:ondrej/php, which will give you all your versions of PHP
@@ -16,6 +16,7 @@ apt -yqq autoremove
 
 for v in ${PHP_VERSION[@]}; do
     PHPv=$v
+    echo -e "${CYAN}[Installation of PHP ${PHPv}]${NC}"
 
     # Install PHP-FPM stack
     PHP_PKGS=("
