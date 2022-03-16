@@ -31,7 +31,7 @@ source <(grep -v '^#' ${SCRIPT_PATH}/vars.sh | grep -v '^\[' | sed -E '/^[[:spac
 
 ##. ./scripts/remove_swap.sh
 
-ech -n "Do you want create a new domain? (yes/no)"
+echo -n "Do you want create a new domain? (yes/no)"
 read CREATE_NEW_DOMAIN
 
 if [ $CREATE_NEW_DOMAIN == "yes" ]; then
