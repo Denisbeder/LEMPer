@@ -25,7 +25,7 @@ LEMPer stands for Linux, Engine-X (Nginx), MariaDB and PHP installer written in 
 ### Install LEMPer SERVER stack
 
 ```bash
-sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git && cd LEMPer && sudo ./install.sh
+sudo apt install git && git clone -q https://github.com/denisbeder/LEMPer.git && cd LEMPer && sudo chmod +x ./install_server.sh && sudo ./install_server.sh
 ```
 
 ### Install LEMPer MYSQL stack
