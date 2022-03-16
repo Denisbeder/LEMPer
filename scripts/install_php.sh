@@ -15,7 +15,7 @@ apt install -yqq php-pear php-xml pkg-php-tools spawn-fcgi fcgiwrap
 apt -yqq autoremove
 
 for v in ${PHP_VERSION[@]}; do
-    PHPv=v
+    PHPv=$v
 
     # Install PHP-FPM stack
     PHP_PKGS=("
