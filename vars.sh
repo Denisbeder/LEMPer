@@ -25,7 +25,7 @@ RAM_SIZE=$(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) / (1024 * 1024)))
 TIMEZONE=America/Campo_Grande
 
 # It is highly recommended to install PHP version 7.4 or greater.
-PHP_VERSION=7.4
+PHP_VERSION=("7.2" "7.4" "8.1")
 
 # Use NodeJS version.
 NODEJS_VERSION=16
