@@ -20,7 +20,6 @@ echo -n "Enter the name a domain: "
 read DOMAIN
 
 DOMAIN_PATH="$ROOT_PATH_BASE/$DOMAIN"
-PATH_ARTISAN="$DOMAIN_PATH"
 
 # verify if project directory exists before proceed
 if [[ ! -d $DOMAIN_PATH ]]; then
@@ -39,11 +38,13 @@ echo -n "Create WORKER for Laravel 'queue' to this domain? (yes/no): "
 read CREATE_WORKER
 
 if [[ "$CREATE_CRONTAB" == "yes" || "$CREATE_WORKER" == "yes" ]]; then
-    if [[ ! -f "$PWD/artisan" ]]; then echo "tem artijsan" fi
+    if [[ ! -f "$PWD/artisan" ]]; then 
         echo -n "Where is the path to Laravel ARTISAN? (empty=default): "
         read PATH_ARTISAN
         # Condition ternary. If variable $PATH_ARTISAN is empty then set to current directory
         [ $PATH_ARTISAN ] && PATH_ARTISAN=$PATH_ARTISAN || PATH_ARTISAN=$DOMAIN_PATH
+    else
+        PATH_ARTISAN="$PWD"
     fi
 fi
 
@@ -51,7 +52,7 @@ if [[ "$CREATE_WORKER" == "yes" ]]; then
     echo "Creating this WORK on /etc/supervisor/conf.d/laravel-worker-$DOMAIN.conf"
     echo "[program:laravel-worker-${DOMAIN}]
 process_name=%(program_name)s_%(process_num)02d
-command=php ${PATH_ARTISAN}/artisan queue:work --sleep=3 --tries=3
+command=php${PHP_VERSION} ${PATH_ARTISAN}/artisan queue:work --sleep=3 --tries=3
 autostart=true
 autorestart=true
 user=$(whoami)
@@ -82,8 +83,8 @@ fi
 
 # Confirm if is to create CRONTAB
 if [[ "$CREATE_CRONTAB" == "yes" ]]; then
-    echo "Creating this CRONTAB: * * * * * www-data cd ${PATH_ARTISAN} && php artisan schedule:run >> /dev/null 2>&1"
-    echo "* * * * * www-data cd ${PATH_ARTISAN} && php artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab
+    echo "Creating this CRONTAB: * * * * * www-data cd ${PATH_ARTISAN} && php${PHP_VERSION} artisan schedule:run >> /dev/null 2>&1"
+    echo "* * * * * www-data cd ${PATH_ARTISAN} && php${PHP_VERSION} artisan schedule:run >> /dev/null 2>&1" >> /etc/crontab
 fi
 
 # Change permissions
