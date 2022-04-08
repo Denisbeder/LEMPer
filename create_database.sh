@@ -39,9 +39,11 @@ if [[ "$CREATE_USER" == "yes" ]]; then
 
     SQL_QUERY="${SQL_QUERY}
         CREATE USER IF NOT EXISTS '${USER_NAME}'@'localhost' IDENTIFIED BY '${USER_PASS}';
-        GRANT ALL PRIVILEGES ON *.* TO '${USER_NAME}'@'localhost';
-        FLUSH PRIVILEGES;"
+        GRANT ALL PRIVILEGES ON *.* TO 'lemper'@'localhost';"
 fi
+
+SQL_QUERY="${SQL_QUERY}
+        FLUSH PRIVILEGES;"
 
 # Root password is blank for newly installed MariaDB (MySQL).
 if mysql --user=root --password="${MYSQL_ROOT_PASS}" -e "${SQL_QUERY}"; then
