@@ -7,7 +7,7 @@ YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
-USERNAME=dev
+USERNAME=lemper
 
 HOSTNAME=localhost
 
