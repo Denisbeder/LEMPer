@@ -39,7 +39,7 @@ if [[ "$CREATE_USER" == "yes" ]]; then
 
     SQL_QUERY="${SQL_QUERY}
         CREATE USER IF NOT EXISTS '${USER_NAME}'@'localhost' IDENTIFIED BY '${USER_PASS}';
-        GRANT ALL PRIVILEGES ON *.* TO 'lemper'@'localhost';"
+        GRANT ALL PRIVILEGES ON *.* TO '${USER_NAME}'@'localhost';"
 fi
 
 SQL_QUERY="${SQL_QUERY}

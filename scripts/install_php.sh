@@ -11,9 +11,6 @@ apt install -yqq software-properties-common
 add-apt-repository -y ppa:ondrej/php
 apt-update
 
-apt install -yqq php-pear php-xml pkg-php-tools spawn-fcgi fcgiwrap
-apt -yqq autoremove
-
 for v in ${PHP_VERSION[@]}; do
     PHPv=$v
     echo -e "${CYAN}[Installation of PHP ${PHPv}]${NC}"
@@ -111,6 +108,10 @@ for v in ${PHP_VERSION[@]}; do
         fi
     fi
 done
+
+echo -e "${CYAN}[Installation of: php-pear php-xml pkg-php-tools spawn-fcgi fcgiwrap]${NC}"
+apt install -yqq php-pear php-xml pkg-php-tools spawn-fcgi fcgiwrap
+apt -yqq autoremove
 
 # Install Composer
 echo -e "${CYAN}Installing Composer...${NC}"
