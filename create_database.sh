@@ -33,13 +33,14 @@ if [[ "$CREATE_USER" == "yes" ]]; then
 
     if [[ "$DB_BIND" != "" ]]; then
         SQL_QUERY="${SQL_QUERY} 
-        CREATE USER IF NOT EXISTS '${USER_NAME}'@'${MYSQL_BIND_ADDRESS}' IDENTIFIED BY '${USER_PASS}';
-        GRANT ALL PRIVILEGES ON *.* TO '${USER_NAME}'@'${MYSQL_BIND_ADDRESS}';"
+        CREATE USER IF NOT EXISTS 'lemper'@'10.116.112.2' IDENTIFIED BY 'MVMnZq2TW1f&';
+        GRANT ALL PRIVILEGES ON *.* TO 'lemper'@'10.116.112.2';"
     fi
 
     SQL_QUERY="${SQL_QUERY}
-        CREATE USER IF NOT EXISTS '${USER_NAME}'@'localhost' IDENTIFIED BY '${USER_PASS}';
-        GRANT ALL PRIVILEGES ON *.* TO '${USER_NAME}'@'localhost';"
+        CREATE USER IF NOT EXISTS 'lemper'@'10.116.112.2' IDENTIFIED BY 'MVMnZq2TW1f';
+        GRANT ALL PRIVILEGES ON *.* TO 'lemper'@'10.116.112.2';
+        FLUSH PRIVILEGES;"
 fi
 
 SQL_QUERY="${SQL_QUERY}
