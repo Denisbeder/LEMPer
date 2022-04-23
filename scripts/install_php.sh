@@ -9,7 +9,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8 
 apt install -yqq software-properties-common
 add-apt-repository -y ppa:ondrej/php
-apt-update
+apt update
 
 for v in ${PHP_VERSION[@]}; do
     PHPv=$v
@@ -119,5 +119,5 @@ curl -sS https://getcomposer.org/installer | php
 chmod +x composer.phar
 mv composer.phar /usr/local/bin/composer
 composer self-update 
-PATH_COMPOSER=$(wich composer)
+PATH_COMPOSER=$(which composer)
 export PATH="$PATH:${PATH_COMPOSER}"
