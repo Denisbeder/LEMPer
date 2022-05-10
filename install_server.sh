@@ -31,6 +31,8 @@ source <(grep -v '^#' ${SCRIPT_PATH}/vars.sh | grep -v '^\[' | sed -E '/^[[:spac
 
 ##. ./scripts/remove_swap.sh
 
+cp ./vars.sh /home/${USERNAME}/lemper_vars.txt
+
 echo -n "Do you want create a new domain? (yes/no)"
 read CREATE_NEW_DOMAIN
 
